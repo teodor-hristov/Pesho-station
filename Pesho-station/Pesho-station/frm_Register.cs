@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Pesho_station
 {
-    public partial class RegisterForm : Form
+    public partial class frm_Register : Form
     {
-        public RegisterForm()
+        public frm_Register()
         {
             InitializeComponent();
             this.ActiveControl = label1;
@@ -34,7 +34,7 @@ namespace Pesho_station
         void topPanel_MouseDown(object sender, MouseEventArgs e)
         {
             moving = true;
-            topPanel.Capture = true;
+            pnl_top.Capture = true;
             offset = MousePosition;
             original = this.Location;
         }
@@ -53,13 +53,13 @@ namespace Pesho_station
         void topPanel_MouseUp(object sender, MouseEventArgs e)
         {
             moving = false;
-            topPanel.Capture = false;
+            pnl_top.Capture = false;
         }
 
         private void signInButton_Click(object sender, EventArgs e)
         {
             //Works but needs to be improved
-            LoginForm loginForm = new LoginForm();
+            frm_Login loginForm = new frm_Login();
             this.Hide();
             loginForm.ShowDialog();
             this.Close();
