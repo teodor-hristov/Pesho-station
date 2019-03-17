@@ -61,14 +61,60 @@ namespace Pesho_station
         {
             if(pnl_left.Width == 245)
             {
-                pnl_left.Width = 71;
-                pnl_rightBorder.Location = new Point(67, 9);
+                pnl_left.Width = 75;
+                pnl_rightBorder.Location = new Point(81, 9);
+                pnl_leftYellow.BackColor = Color.FromArgb(242, 195, 31);
             }
             else
             {
                 pnl_rightBorder.Location = new Point(241, 9);
                 pnl_left.Width = 245;
+                pnl_leftYellow.BackColor = Color.FromArgb(26, 26, 26);
             }
+        }
+
+        private void btn_home_Enter(object sender, EventArgs e)
+        {
+            lbl_home.ForeColor = Color.FromArgb(234, 157, 30);
+            pnl_leftYellow.Location = new Point(1, 179);
+        }
+
+        private void btn_home_Leave(object sender, EventArgs e)
+        {
+            lbl_home.ForeColor = Color.FromArgb(180, 180, 180);
+        }
+
+        private void btn_phone_Enter(object sender, EventArgs e)
+        {
+            lbl_phone.ForeColor = Color.FromArgb(234, 157, 30);
+            pnl_leftYellow.Location = new Point(1, 265);
+        }
+
+        private void btn_phone_Leave(object sender, EventArgs e)
+        {
+            lbl_phone.ForeColor = Color.FromArgb(180, 180, 180);
+        }
+
+        private void btn_time_Enter(object sender, EventArgs e)
+        {
+            lbl_time.ForeColor = Color.FromArgb(234, 157, 30);
+            pnl_leftYellow.Location = new Point(1, 351);
+        }
+
+        private void btn_time_Leave(object sender, EventArgs e)
+        {
+            lbl_time.ForeColor = Color.FromArgb(180, 180, 180);
+        }
+
+        private void btn_settings_Enter(object sender, EventArgs e)
+        {
+            lbl_settings.ForeColor = Color.FromArgb(234, 157, 30);
+            pnl_leftYellow.Location = new Point(1, 440);
+        }
+
+        private void btn_settings_Leave(object sender, EventArgs e)
+        {
+            lbl_settings.ForeColor = Color.FromArgb(180, 180, 180);
         }
     }
 }
