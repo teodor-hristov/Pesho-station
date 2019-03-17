@@ -145,6 +145,7 @@
             this.btn_login.TabIndex = 3;
             this.btn_login.Text = "Log in";
             this.btn_login.UseVisualStyleBackColor = true;
+            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
             // 
             // btn_signUp
             // 
@@ -191,6 +192,7 @@
             this.Controls.Add(this.btn_exit);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frm_Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
             ((System.ComponentModel.ISupportInitialize)(this.pic_login)).EndInit();
             this.ResumeLayout(false);

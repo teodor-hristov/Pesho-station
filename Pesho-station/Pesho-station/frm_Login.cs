@@ -66,5 +66,13 @@ namespace Pesho_station
             registerForm.ShowDialog();
             this.Close();
         }
+
+        private void btn_login_Click(object sender, EventArgs e)
+        {
+            frm_Client clientForm = new frm_Client();
+            this.Hide();
+            clientForm.ShowDialog();
+            this.Close();
+        }
     }
 }

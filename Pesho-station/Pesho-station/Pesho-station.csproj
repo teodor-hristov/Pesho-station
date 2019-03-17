@@ -80,6 +80,9 @@
     <Compile Include="frm_Register.Designer.cs">
       <DependentUpon>frm_Register.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frm_Client.resx">
+      <DependentUpon>frm_Client.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_Login.resx">
       <DependentUpon>frm_Login.cs</DependentUpon>
     </EmbeddedResource>
