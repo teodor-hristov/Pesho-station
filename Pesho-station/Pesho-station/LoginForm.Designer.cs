@@ -28,14 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.exitButton = new System.Windows.Forms.Label();
             this.minimizeButton = new System.Windows.Forms.Label();
             this.topPanel = new System.Windows.Forms.Panel();
-            this.jMaterialTextbox1 = new JMaterialTextbox.JMaterialTextbox();
+            this.passwordTextbox = new JMaterialTextbox.JMaterialTextbox();
             this.label1 = new System.Windows.Forms.Label();
-            this.jMaterialTextbox2 = new JMaterialTextbox.JMaterialTextbox();
+            this.usernameTextbox = new JMaterialTextbox.JMaterialTextbox();
             this.loginButton = new System.Windows.Forms.Button();
             this.signupButton = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // exitButton
@@ -74,27 +77,27 @@
             this.topPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.topPanel_MouseMove);
             this.topPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.topPanel_MouseUp);
             // 
-            // jMaterialTextbox1
+            // passwordTextbox
             // 
-            this.jMaterialTextbox1.BackColor = System.Drawing.Color.Transparent;
-            this.jMaterialTextbox1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.jMaterialTextbox1.Font_Size = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.jMaterialTextbox1.ForeColors = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
-            this.jMaterialTextbox1.HintText = null;
-            this.jMaterialTextbox1.IsPassword = true;
-            this.jMaterialTextbox1.LineBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.jMaterialTextbox1.LineThickness = 2;
-            this.jMaterialTextbox1.Location = new System.Drawing.Point(34, 255);
-            this.jMaterialTextbox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.jMaterialTextbox1.MaxLength = 32767;
-            this.jMaterialTextbox1.Name = "jMaterialTextbox1";
-            this.jMaterialTextbox1.OnFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
-            this.jMaterialTextbox1.OnFocusedTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
-            this.jMaterialTextbox1.ReadOnly = false;
-            this.jMaterialTextbox1.Size = new System.Drawing.Size(330, 35);
-            this.jMaterialTextbox1.TabIndex = 2;
-            this.jMaterialTextbox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.jMaterialTextbox1.TextName = "Password";
+            this.passwordTextbox.BackColor = System.Drawing.Color.Transparent;
+            this.passwordTextbox.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordTextbox.Font_Size = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passwordTextbox.ForeColors = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
+            this.passwordTextbox.HintText = null;
+            this.passwordTextbox.IsPassword = true;
+            this.passwordTextbox.LineBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.passwordTextbox.LineThickness = 2;
+            this.passwordTextbox.Location = new System.Drawing.Point(34, 255);
+            this.passwordTextbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.passwordTextbox.MaxLength = 32767;
+            this.passwordTextbox.Name = "passwordTextbox";
+            this.passwordTextbox.OnFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.passwordTextbox.OnFocusedTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
+            this.passwordTextbox.ReadOnly = false;
+            this.passwordTextbox.Size = new System.Drawing.Size(330, 35);
+            this.passwordTextbox.TabIndex = 2;
+            this.passwordTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.passwordTextbox.TextName = "Password";
             // 
             // label1
             // 
@@ -104,27 +107,27 @@
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 7;
             // 
-            // jMaterialTextbox2
+            // usernameTextbox
             // 
-            this.jMaterialTextbox2.BackColor = System.Drawing.Color.Transparent;
-            this.jMaterialTextbox2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.jMaterialTextbox2.Font_Size = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.jMaterialTextbox2.ForeColors = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
-            this.jMaterialTextbox2.HintText = null;
-            this.jMaterialTextbox2.IsPassword = false;
-            this.jMaterialTextbox2.LineBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.jMaterialTextbox2.LineThickness = 2;
-            this.jMaterialTextbox2.Location = new System.Drawing.Point(34, 196);
-            this.jMaterialTextbox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.jMaterialTextbox2.MaxLength = 32767;
-            this.jMaterialTextbox2.Name = "jMaterialTextbox2";
-            this.jMaterialTextbox2.OnFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
-            this.jMaterialTextbox2.OnFocusedTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
-            this.jMaterialTextbox2.ReadOnly = false;
-            this.jMaterialTextbox2.Size = new System.Drawing.Size(330, 35);
-            this.jMaterialTextbox2.TabIndex = 1;
-            this.jMaterialTextbox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.jMaterialTextbox2.TextName = "User Name";
+            this.usernameTextbox.BackColor = System.Drawing.Color.Transparent;
+            this.usernameTextbox.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.usernameTextbox.Font_Size = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.usernameTextbox.ForeColors = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
+            this.usernameTextbox.HintText = null;
+            this.usernameTextbox.IsPassword = false;
+            this.usernameTextbox.LineBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.usernameTextbox.LineThickness = 2;
+            this.usernameTextbox.Location = new System.Drawing.Point(34, 196);
+            this.usernameTextbox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.usernameTextbox.MaxLength = 32767;
+            this.usernameTextbox.Name = "usernameTextbox";
+            this.usernameTextbox.OnFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.usernameTextbox.OnFocusedTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
+            this.usernameTextbox.ReadOnly = false;
+            this.usernameTextbox.Size = new System.Drawing.Size(330, 35);
+            this.usernameTextbox.TabIndex = 1;
+            this.usernameTextbox.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.usernameTextbox.TextName = "User Name";
             // 
             // loginButton
             // 
@@ -159,6 +162,17 @@
             this.signupButton.TabIndex = 4;
             this.signupButton.Text = "Sign up";
             this.signupButton.UseVisualStyleBackColor = true;
+            this.signupButton.Click += new System.EventHandler(this.signupButton_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(145, 67);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 92);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
             // LoginForm
             // 
@@ -166,17 +180,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
             this.ClientSize = new System.Drawing.Size(403, 424);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.signupButton);
             this.Controls.Add(this.loginButton);
-            this.Controls.Add(this.jMaterialTextbox2);
+            this.Controls.Add(this.usernameTextbox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.jMaterialTextbox1);
+            this.Controls.Add(this.passwordTextbox);
             this.Controls.Add(this.topPanel);
             this.Controls.Add(this.minimizeButton);
             this.Controls.Add(this.exitButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -187,11 +203,12 @@
         private System.Windows.Forms.Label exitButton;
         private System.Windows.Forms.Label minimizeButton;
         private System.Windows.Forms.Panel topPanel;
-        private JMaterialTextbox.JMaterialTextbox jMaterialTextbox1;
+        private JMaterialTextbox.JMaterialTextbox passwordTextbox;
         private System.Windows.Forms.Label label1;
-        private JMaterialTextbox.JMaterialTextbox jMaterialTextbox2;
+        private JMaterialTextbox.JMaterialTextbox usernameTextbox;
         private System.Windows.Forms.Button loginButton;
         private System.Windows.Forms.Button signupButton;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

@@ -10,25 +10,23 @@ using System.Windows.Forms;
 
 namespace Pesho_station
 {
-    public partial class LoginForm : Form
+    public partial class RegisterForm : Form
     {
-        public LoginForm()
+        public RegisterForm()
         {
             InitializeComponent();
             this.ActiveControl = label1;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void exitButton_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void Minimize_Click(object sender, EventArgs e)
+        private void minimizeButton_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
-
-        // Draggable topPanel
         bool moving;
         Point offset;
         Point original;
@@ -58,12 +56,12 @@ namespace Pesho_station
             topPanel.Capture = false;
         }
 
-        private void signupButton_Click(object sender, EventArgs e)
+        private void signInButton_Click(object sender, EventArgs e)
         {
             //Works but needs to be improved
-            RegisterForm registerForm = new RegisterForm();
+            LoginForm loginForm = new LoginForm();
             this.Hide();
-            registerForm.ShowDialog();
+            loginForm.ShowDialog();
             this.Close();
         }
     }
