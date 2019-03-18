@@ -14,10 +14,14 @@ namespace Pesho_station
     {
         public bool menuHidden = false;
         //menuHidden = false -> default position
+        Map map = new Map();
 
         public frm_Client()
         {
             InitializeComponent();
+            pnl_main.Controls.Add(map);
+            map.Width = 1054;
+            map.Show();
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
@@ -66,6 +70,7 @@ namespace Pesho_station
             {
                 menuHidden = true;
                 pnl_left.Width = 75;
+                map.Width = 1220;
                 pnl_main.Width = 1220;
                 pnl_main.Location = new Point(82, 31);
                 pnl_rightBorder.Location = new Point(81, 9);
@@ -74,6 +79,7 @@ namespace Pesho_station
             else
             {
                 menuHidden = false;
+                map.Width = 1054;
                 pnl_main.Width = 1054;
                 pnl_main.Location = new Point(241, 31);
                 pnl_rightBorder.Location = new Point(241, 9);
