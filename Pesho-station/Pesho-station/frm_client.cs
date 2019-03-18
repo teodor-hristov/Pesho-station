@@ -12,6 +12,9 @@ namespace Pesho_station
 {
     public partial class frm_Client : Form
     {
+        public bool menuHidden = false;
+        //menuHidden = false -> default position
+
         public frm_Client()
         {
             InitializeComponent();
@@ -61,12 +64,18 @@ namespace Pesho_station
         {
             if(pnl_left.Width == 245)
             {
+                menuHidden = true;
                 pnl_left.Width = 75;
+                pnl_main.Width = 1220;
+                pnl_main.Location = new Point(82, 31);
                 pnl_rightBorder.Location = new Point(81, 9);
                 pnl_leftYellow.BackColor = Color.FromArgb(234, 157, 30);
             }
             else
             {
+                menuHidden = false;
+                pnl_main.Width = 1054;
+                pnl_main.Location = new Point(241, 31);
                 pnl_rightBorder.Location = new Point(241, 9);
                 pnl_left.Width = 245;
                 pnl_leftYellow.BackColor = Color.FromArgb(26, 26, 26);

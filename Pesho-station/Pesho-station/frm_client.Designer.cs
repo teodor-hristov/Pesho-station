@@ -35,18 +35,19 @@
             this.pnl_left = new System.Windows.Forms.Panel();
             this.pnl_leftYellow = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_logout = new System.Windows.Forms.Button();
             this.lbl_settings = new System.Windows.Forms.Label();
             this.lbl_time = new System.Windows.Forms.Label();
             this.lbl_phone = new System.Windows.Forms.Label();
             this.lbl_home = new System.Windows.Forms.Label();
-            this.pnl_rightBorder = new System.Windows.Forms.Panel();
-            this.lbl_fullName = new System.Windows.Forms.Label();
-            this.btn_logout = new System.Windows.Forms.Button();
             this.btn_settings = new System.Windows.Forms.Button();
             this.btn_time = new System.Windows.Forms.Button();
             this.btn_phone = new System.Windows.Forms.Button();
             this.btn_home = new System.Windows.Forms.Button();
+            this.pnl_rightBorder = new System.Windows.Forms.Panel();
+            this.lbl_fullName = new System.Windows.Forms.Label();
             this.btn_menu = new System.Windows.Forms.Button();
+            this.pnl_main = new System.Windows.Forms.Panel();
             this.pnl_top.SuspendLayout();
             this.pnl_left.SuspendLayout();
             this.SuspendLayout();
@@ -131,12 +132,25 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "Log out";
             // 
+            // btn_logout
+            // 
+            this.btn_logout.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_logout.BackgroundImage")));
+            this.btn_logout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_logout.FlatAppearance.BorderSize = 0;
+            this.btn_logout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.btn_logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_logout.Location = new System.Drawing.Point(16, 671);
+            this.btn_logout.Name = "btn_logout";
+            this.btn_logout.Size = new System.Drawing.Size(40, 40);
+            this.btn_logout.TabIndex = 19;
+            this.btn_logout.UseVisualStyleBackColor = true;
+            // 
             // lbl_settings
             // 
             this.lbl_settings.AutoSize = true;
             this.lbl_settings.Font = new System.Drawing.Font("Century Gothic", 14.25F);
             this.lbl_settings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.lbl_settings.Location = new System.Drawing.Point(74, 453);
+            this.lbl_settings.Location = new System.Drawing.Point(74, 450);
             this.lbl_settings.Name = "lbl_settings";
             this.lbl_settings.Size = new System.Drawing.Size(80, 22);
             this.lbl_settings.TabIndex = 18;
@@ -147,7 +161,7 @@
             this.lbl_time.AutoSize = true;
             this.lbl_time.Font = new System.Drawing.Font("Century Gothic", 14.25F);
             this.lbl_time.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.lbl_time.Location = new System.Drawing.Point(74, 366);
+            this.lbl_time.Location = new System.Drawing.Point(74, 363);
             this.lbl_time.Name = "lbl_time";
             this.lbl_time.Size = new System.Drawing.Size(146, 22);
             this.lbl_time.TabIndex = 17;
@@ -175,39 +189,6 @@
             this.lbl_home.TabIndex = 15;
             this.lbl_home.Text = "Home";
             // 
-            // pnl_rightBorder
-            // 
-            this.pnl_rightBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.pnl_rightBorder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.pnl_rightBorder.Location = new System.Drawing.Point(241, 9);
-            this.pnl_rightBorder.Name = "pnl_rightBorder";
-            this.pnl_rightBorder.Size = new System.Drawing.Size(2, 718);
-            this.pnl_rightBorder.TabIndex = 10;
-            // 
-            // lbl_fullName
-            // 
-            this.lbl_fullName.AutoSize = true;
-            this.lbl_fullName.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_fullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.lbl_fullName.Location = new System.Drawing.Point(71, 15);
-            this.lbl_fullName.Name = "lbl_fullName";
-            this.lbl_fullName.Size = new System.Drawing.Size(105, 45);
-            this.lbl_fullName.TabIndex = 9;
-            this.lbl_fullName.Text = "Menu";
-            // 
-            // btn_logout
-            // 
-            this.btn_logout.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_logout.BackgroundImage")));
-            this.btn_logout.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_logout.FlatAppearance.BorderSize = 0;
-            this.btn_logout.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
-            this.btn_logout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_logout.Location = new System.Drawing.Point(16, 671);
-            this.btn_logout.Name = "btn_logout";
-            this.btn_logout.Size = new System.Drawing.Size(40, 40);
-            this.btn_logout.TabIndex = 19;
-            this.btn_logout.UseVisualStyleBackColor = true;
-            // 
             // btn_settings
             // 
             this.btn_settings.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_settings.BackgroundImage")));
@@ -215,7 +196,7 @@
             this.btn_settings.FlatAppearance.BorderSize = 0;
             this.btn_settings.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
             this.btn_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_settings.Location = new System.Drawing.Point(16, 440);
+            this.btn_settings.Location = new System.Drawing.Point(16, 437);
             this.btn_settings.Name = "btn_settings";
             this.btn_settings.Size = new System.Drawing.Size(40, 40);
             this.btn_settings.TabIndex = 14;
@@ -268,6 +249,26 @@
             this.btn_home.Enter += new System.EventHandler(this.btn_home_Enter);
             this.btn_home.Leave += new System.EventHandler(this.btn_home_Leave);
             // 
+            // pnl_rightBorder
+            // 
+            this.pnl_rightBorder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.pnl_rightBorder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.pnl_rightBorder.Location = new System.Drawing.Point(241, 9);
+            this.pnl_rightBorder.Name = "pnl_rightBorder";
+            this.pnl_rightBorder.Size = new System.Drawing.Size(2, 718);
+            this.pnl_rightBorder.TabIndex = 10;
+            // 
+            // lbl_fullName
+            // 
+            this.lbl_fullName.AutoSize = true;
+            this.lbl_fullName.Font = new System.Drawing.Font("Segoe UI Semibold", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_fullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.lbl_fullName.Location = new System.Drawing.Point(71, 15);
+            this.lbl_fullName.Name = "lbl_fullName";
+            this.lbl_fullName.Size = new System.Drawing.Size(105, 45);
+            this.lbl_fullName.TabIndex = 9;
+            this.lbl_fullName.Text = "Menu";
+            // 
             // btn_menu
             // 
             this.btn_menu.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_menu.BackgroundImage")));
@@ -282,12 +283,21 @@
             this.btn_menu.UseVisualStyleBackColor = true;
             this.btn_menu.Click += new System.EventHandler(this.btn_menu_Click);
             // 
+            // pnl_main
+            // 
+            this.pnl_main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.pnl_main.Location = new System.Drawing.Point(247, 31);
+            this.pnl_main.Name = "pnl_main";
+            this.pnl_main.Size = new System.Drawing.Size(1054, 720);
+            this.pnl_main.TabIndex = 10;
+            // 
             // frm_Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
             this.ClientSize = new System.Drawing.Size(1296, 754);
+            this.Controls.Add(this.pnl_main);
             this.Controls.Add(this.pnl_left);
             this.Controls.Add(this.pnl_top);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -322,5 +332,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btn_logout;
         private System.Windows.Forms.Panel pnl_leftYellow;
+        private System.Windows.Forms.Panel pnl_main;
     }
 }
