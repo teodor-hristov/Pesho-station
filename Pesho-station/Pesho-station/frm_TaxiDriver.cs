@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Pesho_station
 {
-    public partial class frm_Client : Form
+    public partial class frm_TaxiDriver : Form
     {
-        public frm_Client()
+        public frm_TaxiDriver()
         {
             InitializeComponent();
         }

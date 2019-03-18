@@ -1,6 +1,6 @@
 ﻿namespace Pesho_station
 {
-    partial class frm_Client
+    partial class frm_TaxiDriver
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Client));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_TaxiDriver));
             this.pnl_top = new System.Windows.Forms.Panel();
             this.btn_minimize = new System.Windows.Forms.Label();
             this.btn_exit = new System.Windows.Forms.Label();
@@ -125,7 +125,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.label1.Location = new System.Drawing.Point(73, 677);
+            this.label1.Location = new System.Drawing.Point(70, 677);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 30);
             this.label1.TabIndex = 20;
@@ -134,9 +134,9 @@
             // lbl_settings
             // 
             this.lbl_settings.AutoSize = true;
-            this.lbl_settings.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.lbl_settings.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_settings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.lbl_settings.Location = new System.Drawing.Point(74, 453);
+            this.lbl_settings.Location = new System.Drawing.Point(69, 451);
             this.lbl_settings.Name = "lbl_settings";
             this.lbl_settings.Size = new System.Drawing.Size(80, 22);
             this.lbl_settings.TabIndex = 18;
@@ -145,31 +145,31 @@
             // lbl_time
             // 
             this.lbl_time.AutoSize = true;
-            this.lbl_time.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.lbl_time.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_time.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.lbl_time.Location = new System.Drawing.Point(74, 366);
+            this.lbl_time.Location = new System.Drawing.Point(69, 364);
             this.lbl_time.Name = "lbl_time";
-            this.lbl_time.Size = new System.Drawing.Size(146, 22);
+            this.lbl_time.Size = new System.Drawing.Size(44, 22);
             this.lbl_time.TabIndex = 17;
-            this.lbl_time.Text = "Time remaining";
+            this.lbl_time.Text = "Log";
             // 
             // lbl_phone
             // 
             this.lbl_phone.AutoSize = true;
-            this.lbl_phone.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.lbl_phone.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_phone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.lbl_phone.Location = new System.Drawing.Point(74, 277);
+            this.lbl_phone.Location = new System.Drawing.Point(69, 275);
             this.lbl_phone.Name = "lbl_phone";
-            this.lbl_phone.Size = new System.Drawing.Size(99, 22);
+            this.lbl_phone.Size = new System.Drawing.Size(171, 22);
             this.lbl_phone.TabIndex = 16;
-            this.lbl_phone.Text = "Call a taxi";
+            this.lbl_phone.Text = "Manage requests";
             // 
             // lbl_home
             // 
             this.lbl_home.AutoSize = true;
-            this.lbl_home.Font = new System.Drawing.Font("Century Gothic", 14.25F);
+            this.lbl_home.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_home.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.lbl_home.Location = new System.Drawing.Point(74, 199);
+            this.lbl_home.Location = new System.Drawing.Point(69, 197);
             this.lbl_home.Name = "lbl_home";
             this.lbl_home.Size = new System.Drawing.Size(64, 22);
             this.lbl_home.TabIndex = 15;
@@ -282,7 +282,7 @@
             this.btn_menu.UseVisualStyleBackColor = true;
             this.btn_menu.Click += new System.EventHandler(this.btn_menu_Click);
             // 
-            // frm_Client
+            // frm_TaxiDriver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -291,9 +291,9 @@
             this.Controls.Add(this.pnl_left);
             this.Controls.Add(this.pnl_top);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frm_Client";
+            this.Name = "frm_TaxiDriver";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frm_client";
+            this.Text = "frm_TaxiDriver";
             this.pnl_top.ResumeLayout(false);
             this.pnl_top.PerformLayout();
             this.pnl_left.ResumeLayout(false);
