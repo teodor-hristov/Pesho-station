@@ -188,6 +188,7 @@
             this.lbl_home.Size = new System.Drawing.Size(64, 22);
             this.lbl_home.TabIndex = 15;
             this.lbl_home.Text = "Home";
+            this.lbl_home.Enter += new System.EventHandler(this.btn_home_Enter);
             // 
             // btn_settings
             // 

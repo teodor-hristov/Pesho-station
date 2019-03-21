@@ -12,9 +12,8 @@ namespace Pesho_station
 {
     public partial class frm_Client : Form
     {
-        public bool menuHidden = false;
-        //menuHidden = false -> default position
         Map map = new Map();
+        frm_callTaxi callTaxiForm = new frm_callTaxi();
 
         public frm_Client()
         {
@@ -68,7 +67,6 @@ namespace Pesho_station
         {
             if(pnl_left.Width == 245)
             {
-                menuHidden = true;
                 pnl_left.Width = 75;
                 map.Width = 1220;
                 pnl_main.Width = 1220;
@@ -78,7 +76,6 @@ namespace Pesho_station
             }
             else
             {
-                menuHidden = false;
                 map.Width = 1054;
                 pnl_main.Width = 1054;
                 pnl_main.Location = new Point(241, 31);
@@ -92,17 +89,22 @@ namespace Pesho_station
         {
             lbl_home.ForeColor = Color.FromArgb(234, 157, 30);
             pnl_leftYellow.Location = new Point(1, 179);
+            map.Visible = true;
         }
 
         private void btn_home_Leave(object sender, EventArgs e)
         {
             lbl_home.ForeColor = Color.FromArgb(180, 180, 180);
+            map.Visible = false; //so it doesn't need to reload the map every time
         }
 
         private void btn_phone_Enter(object sender, EventArgs e)
         {
             lbl_phone.ForeColor = Color.FromArgb(234, 157, 30);
             pnl_leftYellow.Location = new Point(1, 265);
+            map.Hide();
+            pnl_main.Controls.Add(callTaxiForm);
+            callTaxiForm.Show();
         }
 
         private void btn_phone_Leave(object sender, EventArgs e)
@@ -131,5 +133,7 @@ namespace Pesho_station
         {
             lbl_settings.ForeColor = Color.FromArgb(180, 180, 180);
         }
+
+        
     }
 }

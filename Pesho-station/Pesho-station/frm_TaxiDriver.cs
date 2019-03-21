@@ -12,9 +12,13 @@ namespace Pesho_station
 {
     public partial class frm_TaxiDriver : Form
     {
+        Map map = new Map();
         public frm_TaxiDriver()
         {
             InitializeComponent();
+            pnl_main.Controls.Add(map);
+            map.Width = 1054;
+            map.Show();
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
@@ -62,11 +66,17 @@ namespace Pesho_station
             if(pnl_left.Width == 245)
             {
                 pnl_left.Width = 75;
+                map.Width = 1220;
+                pnl_main.Width = 1220;
+                pnl_main.Location = new Point(82, 31);
                 pnl_rightBorder.Location = new Point(81, 9);
                 pnl_leftYellow.BackColor = Color.FromArgb(234, 157, 30);
             }
             else
             {
+                map.Width = 1054;
+                pnl_main.Width = 1054;
+                pnl_main.Location = new Point(241, 31);
                 pnl_rightBorder.Location = new Point(241, 9);
                 pnl_left.Width = 245;
                 pnl_leftYellow.BackColor = Color.FromArgb(26, 26, 26);
