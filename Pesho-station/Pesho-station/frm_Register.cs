@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using MySql.Data.MySqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,6 +64,17 @@ namespace Pesho_station
             this.Hide();
             loginForm.ShowDialog();
             this.Close();
+        }
+
+        private void btn_submit_Click(object sender, EventArgs e)
+        {
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand("INSERT into register(fullname,username,phone,password) values('"  + this.txt_fullName.TextName + "','" + this.txt_username.TextName + "','" + this.txt_phoneNumber.TextName + "','" + this.txt_password.TextName + "');", con);
+            var reader = cmd.ExecuteReader();
+            reader.Read();
+            MessageBox.Show("Register Succesfully");
+            con.Close();
         }
     }
 }

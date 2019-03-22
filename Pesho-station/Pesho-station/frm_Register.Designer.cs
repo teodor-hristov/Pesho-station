@@ -232,6 +232,7 @@
             this.btn_submit.TabIndex = 5;
             this.btn_submit.Text = "Submit";
             this.btn_submit.UseVisualStyleBackColor = true;
+            this.btn_submit.Click += new System.EventHandler(this.btn_submit_Click);
             // 
             // lbl_alrHaveAcc
             // 

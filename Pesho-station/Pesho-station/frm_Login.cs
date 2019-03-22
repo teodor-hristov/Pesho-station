@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -69,10 +71,22 @@ namespace Pesho_station
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            frm_Client clientForm = new frm_Client();
-            this.Hide();
-            clientForm.ShowDialog();
-            this.Close();
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand("select * from register", con);
+            var reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                if (txt_usernameLogin.TextName == reader.GetString(2) && txt_passwordLogin.TextName == reader.GetInt32(4).ToString())
+                {
+                    MessageBox.Show("Login Succesfull");
+                }
+            }
+            con.Close();
+        }
+        private void frm_Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
