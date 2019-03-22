@@ -77,7 +77,7 @@ namespace Pesho_station
             var reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                if (txt_usernameLogin.TextName == reader.GetString(2) && txt_passwordLogin.TextName == reader.GetInt32(4).ToString())
+                if (txt_usernameLogin.TextName == reader.GetString(2) && txt_passwordLogin.TextName == reader.GetString(4).ToString())
                 {
                     MessageBox.Show("Login Succesfull");
                 }
