@@ -75,20 +75,25 @@ namespace Pesho_station
         {
             MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
-            MySqlCommand cmd = new MySqlCommand("select * from register", con);
-            var reader = cmd.ExecuteReader();
+            string cmdString = "select * from register where username= @username";
+
+            MySqlCommand cmd2 = new MySqlCommand(cmdString, con);
+            cmd2.Parameters.AddWithValue("@username", txt_username.TextName);
+            var reader = cmd2.ExecuteReader();
             reader.Read();
-            string username = reader.GetString(2);
-            MessageBox.Show(username);
-            if (username == txt_username.TextName)
-            {
-                lbl_usernameExists.Text = "The username already exists";
-            }
-            else
-            {
-                lbl_usernameExists.Text = "";
-            }
-            con.Close();
+                if ( txt_username.TextName == reader.GetString(2))
+                {
+
+                    lbl_usernameExists.Text = "The username already exists";
+                }
+                else
+                {
+                    lbl_usernameExists.Text = "";
+                    
+                }
+            
+            
+
             
         }
 
@@ -159,6 +164,11 @@ namespace Pesho_station
         private void txt_username_Leave(object sender, EventArgs e)
         {
             CheckForExistingUsername();
+        }
+
+        private void frm_Register_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
