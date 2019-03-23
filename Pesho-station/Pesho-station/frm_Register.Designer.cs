@@ -45,6 +45,7 @@
             this.btn_signIn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pic_registration = new System.Windows.Forms.PictureBox();
+            this.lbl_errorMessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic_registration)).BeginInit();
             this.SuspendLayout();
             // 
@@ -89,7 +90,7 @@
             this.lbl_fullName.AutoSize = true;
             this.lbl_fullName.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_fullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
-            this.lbl_fullName.Location = new System.Drawing.Point(56, 219);
+            this.lbl_fullName.Location = new System.Drawing.Point(56, 230);
             this.lbl_fullName.Name = "lbl_fullName";
             this.lbl_fullName.Size = new System.Drawing.Size(101, 22);
             this.lbl_fullName.TabIndex = 6;
@@ -105,7 +106,7 @@
             this.txt_fullName.IsPassword = false;
             this.txt_fullName.LineBackColor = System.Drawing.SystemColors.ActiveBorder;
             this.txt_fullName.LineThickness = 2;
-            this.txt_fullName.Location = new System.Drawing.Point(188, 218);
+            this.txt_fullName.Location = new System.Drawing.Point(188, 229);
             this.txt_fullName.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_fullName.MaxLength = 50;
             this.txt_fullName.Name = "txt_fullName";
@@ -127,7 +128,7 @@
             this.txt_username.IsPassword = false;
             this.txt_username.LineBackColor = System.Drawing.SystemColors.ActiveBorder;
             this.txt_username.LineThickness = 2;
-            this.txt_username.Location = new System.Drawing.Point(188, 266);
+            this.txt_username.Location = new System.Drawing.Point(188, 277);
             this.txt_username.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_username.MaxLength = 50;
             this.txt_username.Name = "txt_username";
@@ -144,7 +145,7 @@
             this.lbl_username.AutoSize = true;
             this.lbl_username.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_username.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
-            this.lbl_username.Location = new System.Drawing.Point(51, 267);
+            this.lbl_username.Location = new System.Drawing.Point(51, 278);
             this.lbl_username.Name = "lbl_username";
             this.lbl_username.Size = new System.Drawing.Size(106, 22);
             this.lbl_username.TabIndex = 9;
@@ -160,7 +161,7 @@
             this.txt_phoneNumber.IsPassword = false;
             this.txt_phoneNumber.LineBackColor = System.Drawing.SystemColors.ActiveBorder;
             this.txt_phoneNumber.LineThickness = 2;
-            this.txt_phoneNumber.Location = new System.Drawing.Point(188, 317);
+            this.txt_phoneNumber.Location = new System.Drawing.Point(188, 328);
             this.txt_phoneNumber.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_phoneNumber.MaxLength = 10;
             this.txt_phoneNumber.Name = "txt_phoneNumber";
@@ -171,13 +172,14 @@
             this.txt_phoneNumber.TabIndex = 3;
             this.txt_phoneNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txt_phoneNumber.TextName = "";
+            this.txt_phoneNumber.Leave += new System.EventHandler(this.txt_phoneNumber_Leave);
             // 
             // lbl_phoneNumber
             // 
             this.lbl_phoneNumber.AutoSize = true;
             this.lbl_phoneNumber.Font = new System.Drawing.Font("Century Gothic", 14.25F);
             this.lbl_phoneNumber.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
-            this.lbl_phoneNumber.Location = new System.Drawing.Point(6, 317);
+            this.lbl_phoneNumber.Location = new System.Drawing.Point(6, 328);
             this.lbl_phoneNumber.Name = "lbl_phoneNumber";
             this.lbl_phoneNumber.Size = new System.Drawing.Size(151, 22);
             this.lbl_phoneNumber.TabIndex = 11;
@@ -193,7 +195,7 @@
             this.txt_password.IsPassword = true;
             this.txt_password.LineBackColor = System.Drawing.SystemColors.ActiveBorder;
             this.txt_password.LineThickness = 2;
-            this.txt_password.Location = new System.Drawing.Point(188, 368);
+            this.txt_password.Location = new System.Drawing.Point(188, 379);
             this.txt_password.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_password.MaxLength = 50;
             this.txt_password.Name = "txt_password";
@@ -204,13 +206,14 @@
             this.txt_password.TabIndex = 4;
             this.txt_password.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txt_password.TextName = "";
+            this.txt_password.Leave += new System.EventHandler(this.txt_password_Leave);
             // 
             // lbl_password
             // 
             this.lbl_password.AutoSize = true;
             this.lbl_password.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_password.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
-            this.lbl_password.Location = new System.Drawing.Point(57, 369);
+            this.lbl_password.Location = new System.Drawing.Point(57, 380);
             this.lbl_password.Name = "lbl_password";
             this.lbl_password.Size = new System.Drawing.Size(100, 22);
             this.lbl_password.TabIndex = 13;
@@ -226,7 +229,7 @@
             this.btn_submit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_submit.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_submit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
-            this.btn_submit.Location = new System.Drawing.Point(188, 427);
+            this.btn_submit.Location = new System.Drawing.Point(188, 438);
             this.btn_submit.Name = "btn_submit";
             this.btn_submit.Size = new System.Drawing.Size(157, 41);
             this.btn_submit.TabIndex = 5;
@@ -239,7 +242,7 @@
             this.lbl_alrHaveAcc.AutoSize = true;
             this.lbl_alrHaveAcc.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_alrHaveAcc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(175)))), ((int)(((byte)(31)))));
-            this.lbl_alrHaveAcc.Location = new System.Drawing.Point(189, 489);
+            this.lbl_alrHaveAcc.Location = new System.Drawing.Point(189, 500);
             this.lbl_alrHaveAcc.Name = "lbl_alrHaveAcc";
             this.lbl_alrHaveAcc.Size = new System.Drawing.Size(156, 17);
             this.lbl_alrHaveAcc.TabIndex = 17;
@@ -252,7 +255,7 @@
             this.btn_signIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_signIn.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.btn_signIn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(192)))), ((int)(((byte)(31)))));
-            this.btn_signIn.Location = new System.Drawing.Point(229, 509);
+            this.btn_signIn.Location = new System.Drawing.Point(229, 520);
             this.btn_signIn.Name = "btn_signIn";
             this.btn_signIn.Size = new System.Drawing.Size(72, 30);
             this.btn_signIn.TabIndex = 6;
@@ -273,12 +276,24 @@
             // pic_registration
             // 
             this.pic_registration.Image = ((System.Drawing.Image)(resources.GetObject("pic_registration.Image")));
-            this.pic_registration.Location = new System.Drawing.Point(192, 49);
+            this.pic_registration.Location = new System.Drawing.Point(192, 57);
             this.pic_registration.Name = "pic_registration";
             this.pic_registration.Size = new System.Drawing.Size(129, 126);
             this.pic_registration.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pic_registration.TabIndex = 19;
             this.pic_registration.TabStop = false;
+            // 
+            // lbl_errorMessage
+            // 
+            this.lbl_errorMessage.AutoSize = true;
+            this.lbl_errorMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.lbl_errorMessage.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_errorMessage.ForeColor = System.Drawing.Color.Red;
+            this.lbl_errorMessage.Location = new System.Drawing.Point(310, 328);
+            this.lbl_errorMessage.Name = "lbl_errorMessage";
+            this.lbl_errorMessage.Size = new System.Drawing.Size(0, 17);
+            this.lbl_errorMessage.TabIndex = 20;
+            this.lbl_errorMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frm_Register
             // 
@@ -286,6 +301,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
             this.ClientSize = new System.Drawing.Size(516, 593);
+            this.Controls.Add(this.lbl_errorMessage);
             this.Controls.Add(this.pic_registration);
             this.Controls.Add(this.btn_signIn);
             this.Controls.Add(this.lbl_alrHaveAcc);
@@ -330,5 +346,6 @@
         private System.Windows.Forms.Button btn_signIn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pic_registration;
+        private System.Windows.Forms.Label lbl_errorMessage;
     }
 }

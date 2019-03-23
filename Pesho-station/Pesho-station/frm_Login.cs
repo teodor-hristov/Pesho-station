@@ -79,7 +79,11 @@ namespace Pesho_station
             {
                 if (txt_usernameLogin.TextName == reader.GetString(2) && txt_passwordLogin.TextName == reader.GetString(4).ToString())
                 {
-                    MessageBox.Show("Login Succesfull");
+                    //MessageBox.Show("Login Succesfull");
+                    frm_Client clientForm = new frm_Client();
+                    this.Hide();
+                    clientForm.ShowDialog();
+                    this.Close();
                 }
             }
             con.Close();
@@ -87,6 +91,33 @@ namespace Pesho_station
         private void frm_Login_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void txt_usernameLogin_Enter(object sender, EventArgs e)
+        {
+            txt_usernameLogin.TextName = "";
+        }
+
+        private void txt_usernameLogin_Leave(object sender, EventArgs e)
+        {
+            if(txt_usernameLogin.TextName == "")
+            {
+                txt_usernameLogin.TextName = "Username";
+            }
+        }
+
+        private void txt_passwordLogin_Enter(object sender, EventArgs e)
+        {
+            txt_passwordLogin.TextName = "";
+        }
+
+        private void txt_passwordLogin_Leave(object sender, EventArgs e)
+        {
+            if(txt_passwordLogin.TextName == "")
+            {
+                txt_passwordLogin.TextName = "password";
+                txt_passwordLogin.IsPassword = true;
+            }
         }
     }
 }

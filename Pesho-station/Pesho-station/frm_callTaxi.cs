@@ -33,5 +33,10 @@ namespace Pesho_station
         {
             btn_requestTaxi.ForeColor = Color.FromArgb(180, 180, 180);
         }
+
+        private void trackBar1_ValueChanged(object sender, EventArgs e)
+        {
+            lbl_scrollValuePass.Text = trackBar1.Value.ToString();
+        }
     }
 }

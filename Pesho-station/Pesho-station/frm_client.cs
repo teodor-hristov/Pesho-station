@@ -65,9 +65,9 @@ namespace Pesho_station
 
         private void btn_menu_Click(object sender, EventArgs e)
         {
-            if(pnl_left.Width == 245)
+            if(pnl_left.Width == 245) //when menu is extended
             {
-                pnl_left.Width = 75;
+                pnl_left.Width = 75;  //makes it shrinked
                 map.Width = 1220;
                 pnl_main.Width = 1220;
                 pnl_main.Location = new Point(82, 31);
@@ -76,7 +76,7 @@ namespace Pesho_station
             }
             else
             {
-                map.Width = 1054;
+                map.Width = 1054; //extends it
                 pnl_main.Width = 1054;
                 pnl_main.Location = new Point(241, 31);
                 pnl_rightBorder.Location = new Point(241, 9);

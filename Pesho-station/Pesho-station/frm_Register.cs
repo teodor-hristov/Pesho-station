@@ -57,7 +57,7 @@ namespace Pesho_station
             pnl_top.Capture = false;
         }
 
-        private void signInButton_Click(object sender, EventArgs e)
+        private void SignIn()
         {
             //Works but needs to be improved
             frm_Login loginForm = new frm_Login();
@@ -66,15 +66,45 @@ namespace Pesho_station
             this.Close();
         }
 
-        private void btn_submit_Click(object sender, EventArgs e)
+        private void signInButton_Click(object sender, EventArgs e)
         {
-            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
-            con.Open();
-            MySqlCommand cmd = new MySqlCommand("INSERT into register(fullname,username,phone,password) values('"  + this.txt_fullName.TextName + "','" + this.txt_username.TextName + "','" + this.txt_phoneNumber.TextName + "','" + this.txt_password.TextName + "');", con);
-            var reader = cmd.ExecuteReader();
-            reader.Read();
-            MessageBox.Show("Register Succesfully");
-            con.Close();
+            SignIn();
+        }
+
+        private void btn_submit_Click(object sender, EventArgs e) //TODO: needs to check if username already exists
+        {
+            if(lbl_errorMessage.Text == "") //checks if there are any errors like wrong phone number
+            {
+                MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+                con.Open();
+                MySqlCommand cmd = new MySqlCommand("INSERT into register(fullname,username,phone,password) values('" + this.txt_fullName.TextName + "','" + this.txt_username.TextName + "','" + this.txt_phoneNumber.TextName + "','" + this.txt_password.TextName + "');", con);
+                var reader = cmd.ExecuteReader();
+                reader.Read();
+                MessageBox.Show("Register Succesfully");
+                con.Close();
+                SignIn();
+            }
+            else
+            {
+
+            }
+        }
+
+        private void txt_password_Leave(object sender, EventArgs e)
+        {
+            txt_password.IsPassword = true;
+        }
+
+        private void txt_phoneNumber_Leave(object sender, EventArgs e)
+        {
+            if(!txt_phoneNumber.TextName.All(c => c >= '0' && c <= '9'))
+            {
+                lbl_errorMessage.Text = "Incorrect phone number";
+            }
+            else
+            {
+                lbl_errorMessage.Text = "";
+            }
         }
     }
 }

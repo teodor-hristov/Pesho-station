@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_callTaxi));
             this.pnl_main = new System.Windows.Forms.Panel();
+            this.lbl_scrollValuePass = new System.Windows.Forms.Label();
+            this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.btn_requestTaxi = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.lbl_nightRate = new System.Windows.Forms.Label();
@@ -44,10 +46,13 @@
             this.lbl_pickupTime = new System.Windows.Forms.Label();
             this.btn_phone = new System.Windows.Forms.Button();
             this.pnl_main.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_main
             // 
+            this.pnl_main.Controls.Add(this.lbl_scrollValuePass);
+            this.pnl_main.Controls.Add(this.trackBar1);
             this.pnl_main.Controls.Add(this.btn_requestTaxi);
             this.pnl_main.Controls.Add(this.label5);
             this.pnl_main.Controls.Add(this.lbl_nightRate);
@@ -65,6 +70,29 @@
             this.pnl_main.Name = "pnl_main";
             this.pnl_main.Size = new System.Drawing.Size(1074, 573);
             this.pnl_main.TabIndex = 32;
+            // 
+            // lbl_scrollValuePass
+            // 
+            this.lbl_scrollValuePass.AutoSize = true;
+            this.lbl_scrollValuePass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_scrollValuePass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.lbl_scrollValuePass.Location = new System.Drawing.Point(843, 168);
+            this.lbl_scrollValuePass.Name = "lbl_scrollValuePass";
+            this.lbl_scrollValuePass.Size = new System.Drawing.Size(16, 16);
+            this.lbl_scrollValuePass.TabIndex = 46;
+            this.lbl_scrollValuePass.Text = "1";
+            // 
+            // trackBar1
+            // 
+            this.trackBar1.LargeChange = 4;
+            this.trackBar1.Location = new System.Drawing.Point(798, 132);
+            this.trackBar1.Maximum = 4;
+            this.trackBar1.Minimum = 1;
+            this.trackBar1.Name = "trackBar1";
+            this.trackBar1.Size = new System.Drawing.Size(104, 45);
+            this.trackBar1.TabIndex = 45;
+            this.trackBar1.Value = 1;
+            this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
             // btn_requestTaxi
             // 
@@ -231,6 +259,7 @@
             this.Text = "frm_callTaxi";
             this.pnl_main.ResumeLayout(false);
             this.pnl_main.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -251,5 +280,7 @@
         private System.Windows.Forms.Label lbl_pickupAddress;
         private System.Windows.Forms.Label lbl_pickupTime;
         private System.Windows.Forms.Button btn_phone;
+        private System.Windows.Forms.TrackBar trackBar1;
+        private System.Windows.Forms.Label lbl_scrollValuePass;
     }
 }

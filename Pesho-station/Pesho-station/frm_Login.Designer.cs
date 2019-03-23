@@ -98,6 +98,8 @@
             this.txt_passwordLogin.TabIndex = 2;
             this.txt_passwordLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txt_passwordLogin.TextName = "Password";
+            this.txt_passwordLogin.Enter += new System.EventHandler(this.txt_passwordLogin_Enter);
+            this.txt_passwordLogin.Leave += new System.EventHandler(this.txt_passwordLogin_Leave);
             // 
             // label1
             // 
@@ -127,7 +129,9 @@
             this.txt_usernameLogin.Size = new System.Drawing.Size(330, 35);
             this.txt_usernameLogin.TabIndex = 1;
             this.txt_usernameLogin.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txt_usernameLogin.TextName = "User Name";
+            this.txt_usernameLogin.TextName = "Username";
+            this.txt_usernameLogin.Enter += new System.EventHandler(this.txt_usernameLogin_Enter);
+            this.txt_usernameLogin.Leave += new System.EventHandler(this.txt_usernameLogin_Leave);
             // 
             // btn_login
             // 
