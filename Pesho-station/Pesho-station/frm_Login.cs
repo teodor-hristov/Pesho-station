@@ -84,6 +84,7 @@ namespace Pesho_station
             if (reader.HasRows)
             {
                 frm_Client clientForm = new frm_Client();
+                clientForm.Username = txt_usernameLogin.TextName;
                 this.Hide();
                 clientForm.ShowDialog();
                 this.Close();

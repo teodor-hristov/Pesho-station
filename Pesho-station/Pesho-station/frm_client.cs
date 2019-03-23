@@ -14,13 +14,20 @@ namespace Pesho_station
     {
         Map map = new Map();
         frm_callTaxi callTaxiForm = new frm_callTaxi();
-
         public frm_Client()
         {
             InitializeComponent();
             pnl_main.Controls.Add(map);
             map.Width = 1054;
             map.Show();
+        }
+
+        private string username;
+
+        public string Username
+        {
+            get { return username; }
+            set { username = value; }
         }
 
         private void btn_exit_Click(object sender, EventArgs e)

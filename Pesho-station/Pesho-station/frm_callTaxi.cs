@@ -112,6 +112,7 @@ namespace Pesho_station
                 MySqlCommand cmd = new MySqlCommand(cmdString, con);
                 var reader = cmd.ExecuteReader();
                 reader.Read();
+            
             MessageBox.Show("You requsted a taxi");
            
 
