@@ -73,17 +73,13 @@ namespace Pesho_station
         {
             MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
-            MySqlCommand cmd = new MySqlCommand("select * from register", con);
+            string cmdString = "select * from register where password=@password and username=@username";
+            MySqlCommand cmd = new MySqlCommand(cmdString, con);
+            cmd.Parameters.AddWithValue("@password", txt_passwordLogin);
+            cmd.Parameters.AddWithValue("@username", txt_usernameLogin);
             var reader = cmd.ExecuteReader();
             reader.Read();
-            if (txt_usernameLogin.TextName == reader.GetString(2) && txt_passwordLogin.TextName == reader.GetString(4).ToString())
-            {
-                //MessageBox.Show("Login Succesfull");
-	            frm_Client clientForm = new frm_Client();
-	            this.Hide();
-	            clientForm.ShowDialog();
-	            this.Close();
-            }
+            MessageBox.Show("Login Succesfull");
             con.Close();
         }
         private void frm_Login_Load(object sender, EventArgs e)
