@@ -71,22 +71,61 @@ namespace Pesho_station
             SignIn();
         }
 
-        private void btn_submit_Click(object sender, EventArgs e) //TODO: needs to check if username already exists
+        private void CheckForExistingUsername()
         {
-            if(lbl_errorMessage.Text == "") //checks if there are any errors like wrong phone number
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand("select * from register", con);
+            var reader = cmd.ExecuteReader();
+            reader.Read();
+            string username = reader.GetString(2);
+            if (username == txt_username.TextName)
             {
-                MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
-                con.Open();
-                MySqlCommand cmd = new MySqlCommand("INSERT into register(fullname,username,phone,password) values('" + this.txt_fullName.TextName + "','" + this.txt_username.TextName + "','" + this.txt_phoneNumber.TextName + "','" + this.txt_password.TextName + "');", con);
-                var reader = cmd.ExecuteReader();
-                reader.Read();
-                MessageBox.Show("Register Succesfully");
-                con.Close();
-                SignIn();
+                lbl_errorMsg.Text = "This username already exists";
             }
             else
             {
+                lbl_errorMsg.Text = "";
+            }
+            con.Close();
+            
+        }
 
+        private void CheckForEmptyFields()
+        {
+            if (txt_username.TextName == "" || txt_fullName.TextName == "" || txt_phoneNumber.TextName == "" || txt_password.TextName == "")
+            {
+                lbl_errorMsg.Text = "Fields cannot be empty";
+            }
+            else
+            {
+                lbl_errorMsg.Text = "";
+            }
+        }
+
+        private void SuccessfullRegister()
+        {
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            con.Open();
+            MySqlCommand cmd = new MySqlCommand("INSERT into register(fullname,username,phone,password) values('" + this.txt_fullName.TextName + "','" + this.txt_username.TextName + "','" + this.txt_phoneNumber.TextName + "','" + this.txt_password.TextName + "');", con);
+            var reader = cmd.ExecuteReader();
+            reader.Read();
+            MessageBox.Show("Register Successfully");
+            con.Close();
+            SignIn();
+        }
+
+        private void btn_submit_Click(object sender, EventArgs e) //TODO: needs to check if username already exists
+        {
+
+            if (lbl_wrongPhoneNumber.Text != "" && lbl_errorMsg.Text != "") //checks if there are any errors like wrong phone number or empty fields
+            {
+                CheckForEmptyFields();
+                CheckForExistingUsername();
+            }
+            else
+            {
+                SuccessfullRegister();
             }
         }
 
@@ -99,11 +138,12 @@ namespace Pesho_station
         {
             if(!txt_phoneNumber.TextName.All(c => c >= '0' && c <= '9'))
             {
-                lbl_errorMessage.Text = "Incorrect phone number";
+                lbl_wrongPhoneNumber.Text = "Incorrect phone number";
+                txt_phoneNumber.TextName = "";
             }
             else
             {
-                lbl_errorMessage.Text = "";
+                lbl_wrongPhoneNumber.Text = "";
             }
         }
     }

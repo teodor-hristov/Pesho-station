@@ -45,7 +45,8 @@
             this.btn_signIn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.pic_registration = new System.Windows.Forms.PictureBox();
-            this.lbl_errorMessage = new System.Windows.Forms.Label();
+            this.lbl_wrongPhoneNumber = new System.Windows.Forms.Label();
+            this.lbl_errorMsg = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic_registration)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,7 +129,7 @@
             this.txt_username.IsPassword = false;
             this.txt_username.LineBackColor = System.Drawing.SystemColors.ActiveBorder;
             this.txt_username.LineThickness = 2;
-            this.txt_username.Location = new System.Drawing.Point(188, 277);
+            this.txt_username.Location = new System.Drawing.Point(188, 278);
             this.txt_username.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txt_username.MaxLength = 50;
             this.txt_username.Name = "txt_username";
@@ -276,24 +277,36 @@
             // pic_registration
             // 
             this.pic_registration.Image = ((System.Drawing.Image)(resources.GetObject("pic_registration.Image")));
-            this.pic_registration.Location = new System.Drawing.Point(192, 57);
+            this.pic_registration.Location = new System.Drawing.Point(192, 46);
             this.pic_registration.Name = "pic_registration";
             this.pic_registration.Size = new System.Drawing.Size(129, 126);
             this.pic_registration.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pic_registration.TabIndex = 19;
             this.pic_registration.TabStop = false;
             // 
-            // lbl_errorMessage
+            // lbl_wrongPhoneNumber
             // 
-            this.lbl_errorMessage.AutoSize = true;
-            this.lbl_errorMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
-            this.lbl_errorMessage.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_errorMessage.ForeColor = System.Drawing.Color.Red;
-            this.lbl_errorMessage.Location = new System.Drawing.Point(310, 328);
-            this.lbl_errorMessage.Name = "lbl_errorMessage";
-            this.lbl_errorMessage.Size = new System.Drawing.Size(0, 17);
-            this.lbl_errorMessage.TabIndex = 20;
-            this.lbl_errorMessage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl_wrongPhoneNumber.AutoSize = true;
+            this.lbl_wrongPhoneNumber.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.lbl_wrongPhoneNumber.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_wrongPhoneNumber.ForeColor = System.Drawing.Color.Red;
+            this.lbl_wrongPhoneNumber.Location = new System.Drawing.Point(310, 328);
+            this.lbl_wrongPhoneNumber.Name = "lbl_wrongPhoneNumber";
+            this.lbl_wrongPhoneNumber.Size = new System.Drawing.Size(0, 17);
+            this.lbl_wrongPhoneNumber.TabIndex = 20;
+            this.lbl_wrongPhoneNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lbl_errorMsg
+            // 
+            this.lbl_errorMsg.AutoSize = true;
+            this.lbl_errorMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.lbl_errorMsg.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_errorMsg.ForeColor = System.Drawing.Color.Red;
+            this.lbl_errorMsg.Location = new System.Drawing.Point(193, 196);
+            this.lbl_errorMsg.Name = "lbl_errorMsg";
+            this.lbl_errorMsg.Size = new System.Drawing.Size(0, 17);
+            this.lbl_errorMsg.TabIndex = 21;
+            this.lbl_errorMsg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frm_Register
             // 
@@ -301,7 +314,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
             this.ClientSize = new System.Drawing.Size(516, 593);
-            this.Controls.Add(this.lbl_errorMessage);
+            this.Controls.Add(this.lbl_errorMsg);
+            this.Controls.Add(this.lbl_wrongPhoneNumber);
             this.Controls.Add(this.pic_registration);
             this.Controls.Add(this.btn_signIn);
             this.Controls.Add(this.lbl_alrHaveAcc);
@@ -346,6 +360,7 @@
         private System.Windows.Forms.Button btn_signIn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pic_registration;
-        private System.Windows.Forms.Label lbl_errorMessage;
+        private System.Windows.Forms.Label lbl_wrongPhoneNumber;
+        private System.Windows.Forms.Label lbl_errorMsg;
     }
 }
