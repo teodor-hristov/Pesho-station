@@ -75,12 +75,10 @@ namespace Pesho_station
             con.Open();
             MySqlCommand cmd = new MySqlCommand("select * from register", con);
             var reader = cmd.ExecuteReader();
-            while (reader.Read())
+            reader.Read();
+            if (txt_usernameLogin.TextName == reader.GetString(2) && txt_passwordLogin.TextName == reader.GetString(4).ToString())
             {
-                if (txt_usernameLogin.TextName == reader.GetString(2) && txt_passwordLogin.TextName == reader.GetString(4).ToString())
-                {
-                    MessageBox.Show("Login Succesfull");
-                }
+               MessageBox.Show("Login Succesfull");
             }
             con.Close();
         }

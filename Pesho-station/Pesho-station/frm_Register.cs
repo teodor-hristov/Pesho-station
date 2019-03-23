@@ -70,10 +70,25 @@ namespace Pesho_station
         {
             MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
-            MySqlCommand cmd = new MySqlCommand("INSERT into register(fullname,username,phone,password) values('"  + this.txt_fullName.TextName + "','" + this.txt_username.TextName + "','" + this.txt_phoneNumber.TextName + "','" + this.txt_password.TextName + "');", con);
+            MySqlCommand cmd = new MySqlCommand("select * from register", con);
             var reader = cmd.ExecuteReader();
             reader.Read();
-            MessageBox.Show("Register Succesfully");
+            string username = reader.GetString(2);
+            if (username == txt_username.TextName)
+            {
+                MessageBox.Show("This username already exists");
+            }
+            else if (txt_username.TextName == "" && txt_fullName.TextName == "" && txt_phoneNumber.TextName == "" && txt_password.TextName == "")
+            {
+                MessageBox.Show("Fields cant be empty");
+            }
+            else
+            {
+                reader.Close();
+                MySqlCommand cmd2 = new MySqlCommand("INSERT into register(fullname,username,phone,password) values('" + this.txt_fullName.TextName + "','" + this.txt_username.TextName + "','" + this.txt_phoneNumber.TextName + "','" + this.txt_password.TextName + "');", con);
+                var reader2 = cmd2.ExecuteReader();
+                MessageBox.Show("Register Succesfully");
+            }
             con.Close();
         }
     }
