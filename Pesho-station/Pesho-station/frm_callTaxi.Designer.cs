@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_callTaxi));
             this.pnl_main = new System.Windows.Forms.Panel();
+            this.txt_dropoffAddress = new JMaterialTextbox.JMaterialTextbox();
+            this.txt_pickupAddress = new JMaterialTextbox.JMaterialTextbox();
             this.cmb_pickupTime = new System.Windows.Forms.ComboBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.cmb_vehicleType = new System.Windows.Forms.ComboBox();
@@ -48,8 +50,6 @@
             this.lbl_pickupAddress = new System.Windows.Forms.Label();
             this.lbl_pickupTime = new System.Windows.Forms.Label();
             this.btn_phone = new System.Windows.Forms.Button();
-            this.txt_pickupAddress = new JMaterialTextbox.JMaterialTextbox();
-            this.txt_dropoffAddress = new JMaterialTextbox.JMaterialTextbox();
             this.pnl_main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
@@ -81,6 +81,50 @@
             this.pnl_main.Size = new System.Drawing.Size(1074, 573);
             this.pnl_main.TabIndex = 32;
             // 
+            // txt_dropoffAddress
+            // 
+            this.txt_dropoffAddress.BackColor = System.Drawing.Color.Transparent;
+            this.txt_dropoffAddress.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txt_dropoffAddress.Font_Size = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txt_dropoffAddress.ForeColors = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
+            this.txt_dropoffAddress.HintText = null;
+            this.txt_dropoffAddress.IsPassword = false;
+            this.txt_dropoffAddress.LineBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.txt_dropoffAddress.LineThickness = 2;
+            this.txt_dropoffAddress.Location = new System.Drawing.Point(230, 289);
+            this.txt_dropoffAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_dropoffAddress.MaxLength = 50;
+            this.txt_dropoffAddress.Name = "txt_dropoffAddress";
+            this.txt_dropoffAddress.OnFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.txt_dropoffAddress.OnFocusedTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
+            this.txt_dropoffAddress.ReadOnly = false;
+            this.txt_dropoffAddress.Size = new System.Drawing.Size(263, 24);
+            this.txt_dropoffAddress.TabIndex = 3;
+            this.txt_dropoffAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txt_dropoffAddress.TextName = "";
+            // 
+            // txt_pickupAddress
+            // 
+            this.txt_pickupAddress.BackColor = System.Drawing.Color.Transparent;
+            this.txt_pickupAddress.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txt_pickupAddress.Font_Size = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txt_pickupAddress.ForeColors = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
+            this.txt_pickupAddress.HintText = null;
+            this.txt_pickupAddress.IsPassword = false;
+            this.txt_pickupAddress.LineBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.txt_pickupAddress.LineThickness = 2;
+            this.txt_pickupAddress.Location = new System.Drawing.Point(230, 210);
+            this.txt_pickupAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_pickupAddress.MaxLength = 50;
+            this.txt_pickupAddress.Name = "txt_pickupAddress";
+            this.txt_pickupAddress.OnFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.txt_pickupAddress.OnFocusedTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
+            this.txt_pickupAddress.ReadOnly = false;
+            this.txt_pickupAddress.Size = new System.Drawing.Size(263, 24);
+            this.txt_pickupAddress.TabIndex = 2;
+            this.txt_pickupAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txt_pickupAddress.TextName = "";
+            // 
             // cmb_pickupTime
             // 
             this.cmb_pickupTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
@@ -106,7 +150,7 @@
             this.cmb_pickupTime.Name = "cmb_pickupTime";
             this.cmb_pickupTime.Size = new System.Drawing.Size(50, 21);
             this.cmb_pickupTime.TabIndex = 1;
-            this.cmb_pickupTime.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmb_pickupTime.SelectedIndexChanged += new System.EventHandler(this.cmb_pickuptime_SelectedIndexChanged);
             // 
             // richTextBox1
             // 
@@ -180,6 +224,7 @@
             this.btn_requestTaxi.Text = "Request a taxi";
             this.btn_requestTaxi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_requestTaxi.UseVisualStyleBackColor = true;
+            this.btn_requestTaxi.Enter += new System.EventHandler(this.btn_requestTaxi_Enter);
             this.btn_requestTaxi.MouseLeave += new System.EventHandler(this.btn_requestTaxi_MouseLeave);
             this.btn_requestTaxi.MouseHover += new System.EventHandler(this.btn_requestTaxi_MouseHover);
             // 
@@ -316,50 +361,7 @@
             this.btn_phone.Size = new System.Drawing.Size(40, 40);
             this.btn_phone.TabIndex = 32;
             this.btn_phone.UseVisualStyleBackColor = true;
-            // 
-            // txt_pickupAddress
-            // 
-            this.txt_pickupAddress.BackColor = System.Drawing.Color.Transparent;
-            this.txt_pickupAddress.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txt_pickupAddress.Font_Size = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txt_pickupAddress.ForeColors = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
-            this.txt_pickupAddress.HintText = null;
-            this.txt_pickupAddress.IsPassword = false;
-            this.txt_pickupAddress.LineBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.txt_pickupAddress.LineThickness = 2;
-            this.txt_pickupAddress.Location = new System.Drawing.Point(230, 210);
-            this.txt_pickupAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txt_pickupAddress.MaxLength = 50;
-            this.txt_pickupAddress.Name = "txt_pickupAddress";
-            this.txt_pickupAddress.OnFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
-            this.txt_pickupAddress.OnFocusedTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
-            this.txt_pickupAddress.ReadOnly = false;
-            this.txt_pickupAddress.Size = new System.Drawing.Size(263, 24);
-            this.txt_pickupAddress.TabIndex = 2;
-            this.txt_pickupAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txt_pickupAddress.TextName = "";
-            // 
-            // txt_dropoffAddress
-            // 
-            this.txt_dropoffAddress.BackColor = System.Drawing.Color.Transparent;
-            this.txt_dropoffAddress.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txt_dropoffAddress.Font_Size = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.txt_dropoffAddress.ForeColors = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
-            this.txt_dropoffAddress.HintText = null;
-            this.txt_dropoffAddress.IsPassword = false;
-            this.txt_dropoffAddress.LineBackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.txt_dropoffAddress.LineThickness = 2;
-            this.txt_dropoffAddress.Location = new System.Drawing.Point(230, 289);
-            this.txt_dropoffAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txt_dropoffAddress.MaxLength = 50;
-            this.txt_dropoffAddress.Name = "txt_dropoffAddress";
-            this.txt_dropoffAddress.OnFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
-            this.txt_dropoffAddress.OnFocusedTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
-            this.txt_dropoffAddress.ReadOnly = false;
-            this.txt_dropoffAddress.Size = new System.Drawing.Size(263, 24);
-            this.txt_dropoffAddress.TabIndex = 3;
-            this.txt_dropoffAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.txt_dropoffAddress.TextName = "";
+            this.btn_phone.Enter += new System.EventHandler(this.btn_phone_Enter);
             // 
             // frm_callTaxi
             // 

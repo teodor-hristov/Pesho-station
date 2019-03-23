@@ -98,9 +98,25 @@ namespace Pesho_station
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmb_pickuptime_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActiveControl = lbl_pickupAddress;
+        }
+
+        private void RequestTaxi()
+        {
+            //TODO:..
+        }
+
+
+        private void btn_requestTaxi_Enter(object sender, EventArgs e)
+        {
+            RequestTaxi();
+        }
+
+        private void btn_phone_Enter(object sender, EventArgs e)
+        {
+            RequestTaxi();
         }
     }
 }

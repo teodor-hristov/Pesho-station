@@ -83,7 +83,6 @@ namespace Pesho_station
 
             if (reader.HasRows)
             {
-                MessageBox.Show("Login Succesfull");
                 frm_Client clientForm = new frm_Client();
                 this.Hide();
                 clientForm.ShowDialog();

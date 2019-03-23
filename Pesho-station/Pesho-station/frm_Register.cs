@@ -116,7 +116,7 @@ namespace Pesho_station
             SignIn();
         }
 
-        private void btn_submit_Click(object sender, EventArgs e) //TODO: needs to check if username already exists
+        private void btn_submit_Click(object sender, EventArgs e)
         {
 
             if (lbl_wrongPhoneNumber.Text != "") //checks if there are any errors like wrong phone number or empty fields
@@ -141,6 +141,7 @@ namespace Pesho_station
         private void txt_password_Leave(object sender, EventArgs e)
         {
             txt_password.IsPassword = true;
+            CheckForEmptyFields();
         }
 
         private void txt_phoneNumber_Leave(object sender, EventArgs e)
@@ -154,16 +155,18 @@ namespace Pesho_station
             {
                 lbl_wrongPhoneNumber.Text = "";
             }
+            CheckForEmptyFields();
         }
 
         private void txt_username_Leave(object sender, EventArgs e)
         {
             CheckForExistingUsername();
+            CheckForEmptyFields();
         }
 
-        private void frm_Register_Load(object sender, EventArgs e)
+        private void txt_fullName_Leave(object sender, EventArgs e)
         {
-
+            CheckForEmptyFields();
         }
     }
 }

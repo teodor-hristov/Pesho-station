@@ -119,6 +119,7 @@
             this.txt_fullName.TabIndex = 1;
             this.txt_fullName.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txt_fullName.TextName = "";
+            this.txt_fullName.Leave += new System.EventHandler(this.txt_fullName_Leave);
             // 
             // txt_username
             // 
@@ -351,7 +352,6 @@
             this.Name = "frm_Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegisterForm";
-            this.Load += new System.EventHandler(this.frm_Register_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pic_registration)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
