@@ -38,6 +38,7 @@
             this.btn_login = new System.Windows.Forms.Button();
             this.btn_signUp = new System.Windows.Forms.Button();
             this.pic_login = new System.Windows.Forms.PictureBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pic_login)).BeginInit();
             this.SuspendLayout();
             // 
@@ -179,12 +180,31 @@
             this.pic_login.TabIndex = 8;
             this.pic_login.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.CausesValidation = false;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.button1.FlatAppearance.BorderSize = 2;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
+            this.button1.Location = new System.Drawing.Point(134, 373);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(133, 29);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Log in without DB";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frm_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
             this.ClientSize = new System.Drawing.Size(403, 424);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pic_login);
             this.Controls.Add(this.btn_signUp);
             this.Controls.Add(this.btn_login);
@@ -216,6 +236,7 @@
         private System.Windows.Forms.Button btn_login;
         private System.Windows.Forms.Button btn_signUp;
         private System.Windows.Forms.PictureBox pic_login;
+        private System.Windows.Forms.Button button1;
     }
 }
 

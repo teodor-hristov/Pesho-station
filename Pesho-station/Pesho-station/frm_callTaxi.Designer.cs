@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_callTaxi));
             this.pnl_main = new System.Windows.Forms.Panel();
+            this.cmb_pickupTime = new System.Windows.Forms.ComboBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.cmb_vehicleType = new System.Windows.Forms.ComboBox();
             this.lbl_scrollValuePass = new System.Windows.Forms.Label();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.btn_requestTaxi = new System.Windows.Forms.Button();
@@ -45,12 +48,19 @@
             this.lbl_pickupAddress = new System.Windows.Forms.Label();
             this.lbl_pickupTime = new System.Windows.Forms.Label();
             this.btn_phone = new System.Windows.Forms.Button();
+            this.txt_pickupAddress = new JMaterialTextbox.JMaterialTextbox();
+            this.txt_dropoffAddress = new JMaterialTextbox.JMaterialTextbox();
             this.pnl_main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_main
             // 
+            this.pnl_main.Controls.Add(this.txt_dropoffAddress);
+            this.pnl_main.Controls.Add(this.txt_pickupAddress);
+            this.pnl_main.Controls.Add(this.cmb_pickupTime);
+            this.pnl_main.Controls.Add(this.richTextBox1);
+            this.pnl_main.Controls.Add(this.cmb_vehicleType);
             this.pnl_main.Controls.Add(this.lbl_scrollValuePass);
             this.pnl_main.Controls.Add(this.trackBar1);
             this.pnl_main.Controls.Add(this.btn_requestTaxi);
@@ -71,12 +81,72 @@
             this.pnl_main.Size = new System.Drawing.Size(1074, 573);
             this.pnl_main.TabIndex = 32;
             // 
+            // cmb_pickupTime
+            // 
+            this.cmb_pickupTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.cmb_pickupTime.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmb_pickupTime.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold);
+            this.cmb_pickupTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(157)))), ((int)(((byte)(30)))));
+            this.cmb_pickupTime.FormattingEnabled = true;
+            this.cmb_pickupTime.Items.AddRange(new object[] {
+            "00",
+            "05",
+            "10",
+            "15",
+            "20",
+            "25",
+            "30",
+            "35",
+            "40",
+            "45",
+            "50",
+            "55",
+            "60"});
+            this.cmb_pickupTime.Location = new System.Drawing.Point(234, 139);
+            this.cmb_pickupTime.Name = "cmb_pickupTime";
+            this.cmb_pickupTime.Size = new System.Drawing.Size(50, 21);
+            this.cmb_pickupTime.TabIndex = 1;
+            this.cmb_pickupTime.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
+            this.richTextBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.richTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.richTextBox1.Location = new System.Drawing.Point(778, 289);
+            this.richTextBox1.MaximumSize = new System.Drawing.Size(229, 126);
+            this.richTextBox1.MaxLength = 296;
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(229, 24);
+            this.richTextBox1.TabIndex = 6;
+            this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // cmb_vehicleType
+            // 
+            this.cmb_vehicleType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.cmb_vehicleType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_vehicleType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmb_vehicleType.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cmb_vehicleType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(157)))), ((int)(((byte)(30)))));
+            this.cmb_vehicleType.FormattingEnabled = true;
+            this.cmb_vehicleType.Items.AddRange(new object[] {
+            "Normal",
+            "XL",
+            "SUV",
+            "LUX"});
+            this.cmb_vehicleType.Location = new System.Drawing.Point(787, 213);
+            this.cmb_vehicleType.Name = "cmb_vehicleType";
+            this.cmb_vehicleType.Size = new System.Drawing.Size(104, 21);
+            this.cmb_vehicleType.TabIndex = 5;
+            this.cmb_vehicleType.SelectedIndexChanged += new System.EventHandler(this.cmb_vehicleType_SelectedIndexChanged);
+            // 
             // lbl_scrollValuePass
             // 
             this.lbl_scrollValuePass.AutoSize = true;
             this.lbl_scrollValuePass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_scrollValuePass.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.lbl_scrollValuePass.Location = new System.Drawing.Point(843, 168);
+            this.lbl_scrollValuePass.Location = new System.Drawing.Point(832, 168);
             this.lbl_scrollValuePass.Name = "lbl_scrollValuePass";
             this.lbl_scrollValuePass.Size = new System.Drawing.Size(16, 16);
             this.lbl_scrollValuePass.TabIndex = 46;
@@ -85,12 +155,12 @@
             // trackBar1
             // 
             this.trackBar1.LargeChange = 4;
-            this.trackBar1.Location = new System.Drawing.Point(798, 132);
-            this.trackBar1.Maximum = 4;
+            this.trackBar1.Location = new System.Drawing.Point(787, 132);
+            this.trackBar1.Maximum = 6;
             this.trackBar1.Minimum = 1;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Size = new System.Drawing.Size(104, 45);
-            this.trackBar1.TabIndex = 45;
+            this.trackBar1.TabIndex = 4;
             this.trackBar1.Value = 1;
             this.trackBar1.ValueChanged += new System.EventHandler(this.trackBar1_ValueChanged);
             // 
@@ -103,10 +173,10 @@
             this.btn_requestTaxi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_requestTaxi.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Bold);
             this.btn_requestTaxi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.btn_requestTaxi.Location = new System.Drawing.Point(323, 473);
+            this.btn_requestTaxi.Location = new System.Drawing.Point(412, 473);
             this.btn_requestTaxi.Name = "btn_requestTaxi";
             this.btn_requestTaxi.Size = new System.Drawing.Size(280, 59);
-            this.btn_requestTaxi.TabIndex = 44;
+            this.btn_requestTaxi.TabIndex = 7;
             this.btn_requestTaxi.Text = "Request a taxi";
             this.btn_requestTaxi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_requestTaxi.UseVisualStyleBackColor = true;
@@ -129,22 +199,22 @@
             this.lbl_nightRate.AutoSize = true;
             this.lbl_nightRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_nightRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(157)))), ((int)(((byte)(30)))));
-            this.lbl_nightRate.Location = new System.Drawing.Point(347, 395);
+            this.lbl_nightRate.Location = new System.Drawing.Point(436, 411);
             this.lbl_nightRate.Name = "lbl_nightRate";
-            this.lbl_nightRate.Size = new System.Drawing.Size(197, 20);
+            this.lbl_nightRate.Size = new System.Drawing.Size(179, 20);
             this.lbl_nightRate.TabIndex = 42;
-            this.lbl_nightRate.Text = "Night rate per km: 0.89leva";
+            this.lbl_nightRate.Text = "Night rate per km: 0.89lv";
             // 
             // lbl_dayRate
             // 
             this.lbl_dayRate.AutoSize = true;
             this.lbl_dayRate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.lbl_dayRate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(157)))), ((int)(((byte)(30)))));
-            this.lbl_dayRate.Location = new System.Drawing.Point(351, 363);
+            this.lbl_dayRate.Location = new System.Drawing.Point(440, 379);
             this.lbl_dayRate.Name = "lbl_dayRate";
-            this.lbl_dayRate.Size = new System.Drawing.Size(188, 20);
+            this.lbl_dayRate.Size = new System.Drawing.Size(170, 20);
             this.lbl_dayRate.TabIndex = 41;
-            this.lbl_dayRate.Text = "Day rate per km: 0.79leva";
+            this.lbl_dayRate.Text = "Day rate per km: 0.79lv";
             // 
             // lbl_journey
             // 
@@ -198,7 +268,7 @@
             this.lbl_booking.Location = new System.Drawing.Point(185, 34);
             this.lbl_booking.Name = "lbl_booking";
             this.lbl_booking.Size = new System.Drawing.Size(154, 41);
-            this.lbl_booking.TabIndex = 36;
+            this.lbl_booking.TabIndex = 0;
             this.lbl_booking.Text = "Booking";
             // 
             // lbl_dropoffDest
@@ -241,11 +311,55 @@
             this.btn_phone.FlatAppearance.BorderSize = 0;
             this.btn_phone.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
             this.btn_phone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_phone.Location = new System.Drawing.Point(282, 480);
+            this.btn_phone.Location = new System.Drawing.Point(371, 480);
             this.btn_phone.Name = "btn_phone";
             this.btn_phone.Size = new System.Drawing.Size(40, 40);
             this.btn_phone.TabIndex = 32;
             this.btn_phone.UseVisualStyleBackColor = true;
+            // 
+            // txt_pickupAddress
+            // 
+            this.txt_pickupAddress.BackColor = System.Drawing.Color.Transparent;
+            this.txt_pickupAddress.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txt_pickupAddress.Font_Size = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txt_pickupAddress.ForeColors = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
+            this.txt_pickupAddress.HintText = null;
+            this.txt_pickupAddress.IsPassword = false;
+            this.txt_pickupAddress.LineBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.txt_pickupAddress.LineThickness = 2;
+            this.txt_pickupAddress.Location = new System.Drawing.Point(230, 210);
+            this.txt_pickupAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_pickupAddress.MaxLength = 50;
+            this.txt_pickupAddress.Name = "txt_pickupAddress";
+            this.txt_pickupAddress.OnFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.txt_pickupAddress.OnFocusedTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
+            this.txt_pickupAddress.ReadOnly = false;
+            this.txt_pickupAddress.Size = new System.Drawing.Size(263, 24);
+            this.txt_pickupAddress.TabIndex = 2;
+            this.txt_pickupAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txt_pickupAddress.TextName = "";
+            // 
+            // txt_dropoffAddress
+            // 
+            this.txt_dropoffAddress.BackColor = System.Drawing.Color.Transparent;
+            this.txt_dropoffAddress.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txt_dropoffAddress.Font_Size = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.txt_dropoffAddress.ForeColors = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
+            this.txt_dropoffAddress.HintText = null;
+            this.txt_dropoffAddress.IsPassword = false;
+            this.txt_dropoffAddress.LineBackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.txt_dropoffAddress.LineThickness = 2;
+            this.txt_dropoffAddress.Location = new System.Drawing.Point(230, 289);
+            this.txt_dropoffAddress.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txt_dropoffAddress.MaxLength = 50;
+            this.txt_dropoffAddress.Name = "txt_dropoffAddress";
+            this.txt_dropoffAddress.OnFocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.txt_dropoffAddress.OnFocusedTextColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(195)))), ((int)(((byte)(31)))));
+            this.txt_dropoffAddress.ReadOnly = false;
+            this.txt_dropoffAddress.Size = new System.Drawing.Size(263, 24);
+            this.txt_dropoffAddress.TabIndex = 3;
+            this.txt_dropoffAddress.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txt_dropoffAddress.TextName = "";
             // 
             // frm_callTaxi
             // 
@@ -282,5 +396,10 @@
         private System.Windows.Forms.Button btn_phone;
         private System.Windows.Forms.TrackBar trackBar1;
         private System.Windows.Forms.Label lbl_scrollValuePass;
+        private System.Windows.Forms.ComboBox cmb_vehicleType;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.ComboBox cmb_pickupTime;
+        private JMaterialTextbox.JMaterialTextbox txt_dropoffAddress;
+        private JMaterialTextbox.JMaterialTextbox txt_pickupAddress;
     }
 }

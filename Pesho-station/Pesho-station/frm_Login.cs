@@ -117,5 +117,13 @@ namespace Pesho_station
                 txt_passwordLogin.IsPassword = true;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frm_Client clientForm = new frm_Client();
+            this.Hide();
+            clientForm.ShowDialog();
+            this.Close();
+        }
     }
 }
