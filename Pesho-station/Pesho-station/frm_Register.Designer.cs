@@ -46,7 +46,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pic_registration = new System.Windows.Forms.PictureBox();
             this.lbl_wrongPhoneNumber = new System.Windows.Forms.Label();
-            this.lbl_errorMsg = new System.Windows.Forms.Label();
+            this.lbl_EmptyFields = new System.Windows.Forms.Label();
+            this.lbl_usernameExists = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pic_registration)).BeginInit();
             this.SuspendLayout();
             // 
@@ -140,6 +141,7 @@
             this.txt_username.TabIndex = 2;
             this.txt_username.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txt_username.TextName = "";
+            this.txt_username.Leave += new System.EventHandler(this.txt_username_Leave);
             // 
             // lbl_username
             // 
@@ -296,17 +298,29 @@
             this.lbl_wrongPhoneNumber.TabIndex = 20;
             this.lbl_wrongPhoneNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lbl_errorMsg
+            // lbl_EmptyFields
             // 
-            this.lbl_errorMsg.AutoSize = true;
-            this.lbl_errorMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
-            this.lbl_errorMsg.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_errorMsg.ForeColor = System.Drawing.Color.Red;
-            this.lbl_errorMsg.Location = new System.Drawing.Point(193, 196);
-            this.lbl_errorMsg.Name = "lbl_errorMsg";
-            this.lbl_errorMsg.Size = new System.Drawing.Size(0, 17);
-            this.lbl_errorMsg.TabIndex = 21;
-            this.lbl_errorMsg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbl_EmptyFields.AutoSize = true;
+            this.lbl_EmptyFields.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.lbl_EmptyFields.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_EmptyFields.ForeColor = System.Drawing.Color.Red;
+            this.lbl_EmptyFields.Location = new System.Drawing.Point(193, 196);
+            this.lbl_EmptyFields.Name = "lbl_EmptyFields";
+            this.lbl_EmptyFields.Size = new System.Drawing.Size(0, 17);
+            this.lbl_EmptyFields.TabIndex = 21;
+            this.lbl_EmptyFields.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lbl_usernameExists
+            // 
+            this.lbl_usernameExists.AutoSize = true;
+            this.lbl_usernameExists.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.lbl_usernameExists.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_usernameExists.ForeColor = System.Drawing.Color.Red;
+            this.lbl_usernameExists.Location = new System.Drawing.Point(284, 278);
+            this.lbl_usernameExists.Name = "lbl_usernameExists";
+            this.lbl_usernameExists.Size = new System.Drawing.Size(0, 17);
+            this.lbl_usernameExists.TabIndex = 22;
+            this.lbl_usernameExists.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frm_Register
             // 
@@ -314,7 +328,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
             this.ClientSize = new System.Drawing.Size(516, 593);
-            this.Controls.Add(this.lbl_errorMsg);
+            this.Controls.Add(this.lbl_usernameExists);
+            this.Controls.Add(this.lbl_EmptyFields);
             this.Controls.Add(this.lbl_wrongPhoneNumber);
             this.Controls.Add(this.pic_registration);
             this.Controls.Add(this.btn_signIn);
@@ -361,6 +376,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pic_registration;
         private System.Windows.Forms.Label lbl_wrongPhoneNumber;
-        private System.Windows.Forms.Label lbl_errorMsg;
+        private System.Windows.Forms.Label lbl_EmptyFields;
+        private System.Windows.Forms.Label lbl_usernameExists;
     }
 }

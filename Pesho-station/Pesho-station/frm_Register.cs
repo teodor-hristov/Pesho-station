@@ -79,13 +79,14 @@ namespace Pesho_station
             var reader = cmd.ExecuteReader();
             reader.Read();
             string username = reader.GetString(2);
+            MessageBox.Show(username);
             if (username == txt_username.TextName)
             {
-                lbl_errorMsg.Text = "This username already exists";
+                lbl_usernameExists.Text = "The username already exists";
             }
             else
             {
-                lbl_errorMsg.Text = "";
+                lbl_usernameExists.Text = "";
             }
             con.Close();
             
@@ -95,11 +96,11 @@ namespace Pesho_station
         {
             if (txt_username.TextName == "" || txt_fullName.TextName == "" || txt_phoneNumber.TextName == "" || txt_password.TextName == "")
             {
-                lbl_errorMsg.Text = "Fields cannot be empty";
+                lbl_EmptyFields.Text = "Fields cannot be empty";
             }
             else
             {
-                lbl_errorMsg.Text = "";
+                lbl_EmptyFields.Text = "";
             }
         }
 
@@ -118,9 +119,17 @@ namespace Pesho_station
         private void btn_submit_Click(object sender, EventArgs e) //TODO: needs to check if username already exists
         {
 
-            if (lbl_wrongPhoneNumber.Text != "" && lbl_errorMsg.Text != "") //checks if there are any errors like wrong phone number or empty fields
+            if (lbl_wrongPhoneNumber.Text != "") //checks if there are any errors like wrong phone number or empty fields
+            {
+                txt_phoneNumber.TextName = "";
+                
+            }
+            else if(lbl_EmptyFields.Text != "")
             {
                 CheckForEmptyFields();
+            }
+            else if(lbl_usernameExists.Text != "")
+            {
                 CheckForExistingUsername();
             }
             else
@@ -145,6 +154,11 @@ namespace Pesho_station
             {
                 lbl_wrongPhoneNumber.Text = "";
             }
+        }
+
+        private void txt_username_Leave(object sender, EventArgs e)
+        {
+            CheckForExistingUsername();
         }
     }
 }
