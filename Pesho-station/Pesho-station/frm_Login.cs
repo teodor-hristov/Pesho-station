@@ -75,12 +75,27 @@ namespace Pesho_station
             con.Open();
             string cmdString = "select * from register where password=@password and username=@username";
             MySqlCommand cmd = new MySqlCommand(cmdString, con);
-            cmd.Parameters.AddWithValue("@password", txt_passwordLogin);
-            cmd.Parameters.AddWithValue("@username", txt_usernameLogin);
+            cmd.Parameters.AddWithValue("@password", txt_passwordLogin.TextName);
+            cmd.Parameters.AddWithValue("@username", txt_usernameLogin.TextName);
+
             var reader = cmd.ExecuteReader();
             reader.Read();
-            MessageBox.Show("Login Succesfull");
+
+            if (reader.HasRows)
+            {
+                MessageBox.Show("Login Succesfull");
+                frm_Client clientForm = new frm_Client();
+                this.Hide();
+                clientForm.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Invalid credentials");
+            }
+
             con.Close();
+
         }
         private void frm_Login_Load(object sender, EventArgs e)
         {

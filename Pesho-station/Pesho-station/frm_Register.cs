@@ -81,20 +81,15 @@ namespace Pesho_station
             cmd2.Parameters.AddWithValue("@username", txt_username.TextName);
             var reader = cmd2.ExecuteReader();
             reader.Read();
-                if ( txt_username.TextName == reader.GetString(2))
-                {
+            if (reader.HasRows)
+            {
+                lbl_usernameExists.Text = "The username already exists";
+            }
+            else
+            {
+                lbl_usernameExists.Text = "";
 
-                    lbl_usernameExists.Text = "The username already exists";
-                }
-                else
-                {
-                    lbl_usernameExists.Text = "";
-                    
-                }
-            
-            
-
-            
+            }   
         }
 
         private void CheckForEmptyFields()
