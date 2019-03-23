@@ -108,7 +108,7 @@ namespace Pesho_station
         {
                 MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
                 con.Open();
-                string cmdString = "insert into taxi(number,type,pickupTime,pickUpAdress,dropUpAdress) values('" + this.trackBar1.Value + "', '" + this.cmb_vehicleType.Text + "', '" + this.cmb_pickupTime.Text + "', '" + this.txt_pickupAddress.TextName + "', '" + this.txt_dropoffAddress.TextName + "'); ";
+                string cmdString = "insert into taxi(number,type,pickupTime,pickUpAdress,dropUpAdress,driverNote) values('" + this.trackBar1.Value + "', '" + this.cmb_vehicleType.Text + "', '" + this.cmb_pickupTime.Text + "', '" + this.txt_pickupAddress.TextName + "', '" + this.txt_dropoffAddress.TextName + "', '" +this.richTextBox1.Text + "'); ";
                 MySqlCommand cmd = new MySqlCommand(cmdString, con);
                 var reader = cmd.ExecuteReader();
                 reader.Read();
