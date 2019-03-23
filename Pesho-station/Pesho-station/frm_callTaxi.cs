@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using MySql.Data.MySqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -105,6 +106,15 @@ namespace Pesho_station
 
         private void RequestTaxi()
         {
+                MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+                con.Open();
+                string cmdString = "insert into taxi(number,type,pickupTime,pickUpAdress,dropUpAdress) values('" + this.trackBar1.Value + "', '" + this.cmb_vehicleType.Text + "', '" + this.cmb_pickupTime.Text + "', '" + this.txt_pickupAddress.TextName + "', '" + this.txt_dropoffAddress.TextName + "'); ";
+                MySqlCommand cmd = new MySqlCommand(cmdString, con);
+                var reader = cmd.ExecuteReader();
+                reader.Read();
+            MessageBox.Show("You requsted a taxi");
+           
+
             //TODO:..
         }
 
@@ -117,6 +127,16 @@ namespace Pesho_station
         private void btn_phone_Enter(object sender, EventArgs e)
         {
             RequestTaxi();
+        }
+
+        private void pnl_main_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_requestTaxi_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

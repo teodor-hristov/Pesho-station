@@ -80,6 +80,7 @@
             this.pnl_main.Name = "pnl_main";
             this.pnl_main.Size = new System.Drawing.Size(1074, 573);
             this.pnl_main.TabIndex = 32;
+            this.pnl_main.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_main_Paint);
             // 
             // txt_dropoffAddress
             // 
@@ -224,6 +225,7 @@
             this.btn_requestTaxi.Text = "Request a taxi";
             this.btn_requestTaxi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_requestTaxi.UseVisualStyleBackColor = true;
+            this.btn_requestTaxi.Click += new System.EventHandler(this.btn_requestTaxi_Click);
             this.btn_requestTaxi.Enter += new System.EventHandler(this.btn_requestTaxi_Enter);
             this.btn_requestTaxi.MouseLeave += new System.EventHandler(this.btn_requestTaxi_MouseLeave);
             this.btn_requestTaxi.MouseHover += new System.EventHandler(this.btn_requestTaxi_MouseHover);
