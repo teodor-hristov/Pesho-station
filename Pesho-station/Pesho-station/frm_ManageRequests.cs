@@ -47,33 +47,35 @@ namespace Pesho_station
 
         private void DeleteSelectedRow()
         {
-            
             MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
-            string cmdString = "delete from taxi WHERE id=@index";
+            string cmdString = "delete from taxi WHERE callerPhone=@callerPhone";
             MySqlCommand cmd = new MySqlCommand(cmdString, con);
-            cmd.Parameters.AddWithValue("@index", Id);
+            cmd.Parameters.AddWithValue("@callerPhone", PhoneNumber);
             var deleter = cmd.ExecuteReader();
             deleter.Read();
             deleter.Close();
 
-            string cmdString2 = "select max(id) from taxi";
-            MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
-            var maxnumber = cmd2.ExecuteReader();
-            maxnumber.Read();
-            int maxId = maxnumber.GetInt32(0);
-            maxId += 1;
 
-            maxnumber.Close();
-            string cmdString3 = "alter table taxi auto_increment=@maxId";
-            MySqlCommand cmd3 = new MySqlCommand(cmdString3, con);
-            cmd3.Parameters.AddWithValue("@maxid", maxId);
-            var refreshAutoIncrement = cmd3.ExecuteReader();
-            refreshAutoIncrement.Read();
-            refreshAutoIncrement.Close();
+            //tried doing autoincrement properly, failed..
+            //string cmdString2 = "select max(id) from taxi";
+            //MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
+            //var maxnumber = cmd2.ExecuteReader();
+            //maxnumber.Read();
+            //int maxId = maxnumber.GetInt32(0);
+            //maxId += 1;
+
+            //maxnumber.Close();
+            //string cmdString3 = "alter table taxi auto_increment=@maxId";
+            //MySqlCommand cmd3 = new MySqlCommand(cmdString3, con);
+            //cmd3.Parameters.AddWithValue("@maxid", maxId);
+            //var refreshAutoIncrement = cmd3.ExecuteReader();
+            //refreshAutoIncrement.Read();
+            //refreshAutoIncrement.Close();
 
             LoadDataSet();
-            
+
+
         }
 
         private void LoadDataSet()
@@ -81,7 +83,7 @@ namespace Pesho_station
             dTable.Rows.Clear();
             MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
-            MySqlCommand cmd = new MySqlCommand("select * from taxi", con);
+            MySqlCommand cmd = new MySqlCommand("select passengers,type,pickUpTime,pickUpAdress,dropUpAdress,driverNote,callerPhone,callerFullname from taxi", con);
             MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
             MyAdapter.SelectCommand = cmd;
             MyAdapter.Fill(dTable);
@@ -105,7 +107,7 @@ namespace Pesho_station
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
-            Id = int.Parse(row.Cells["id"].Value.ToString());
+            //Id = int.Parse(row.Cells["id"].Value.ToString());
             FullName = row.Cells["callerFullName"].Value.ToString();
             PhoneNumber = row.Cells["callerPhone"].Value.ToString();
             CarType = row.Cells["type"].Value.ToString();
