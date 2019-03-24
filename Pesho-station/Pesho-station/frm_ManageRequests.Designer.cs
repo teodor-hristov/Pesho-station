@@ -28,8 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_ManageRequests));
             this.lbl_booking = new System.Windows.Forms.Label();
             this.pnl_main = new System.Windows.Forms.Panel();
+            this.btn_delete = new System.Windows.Forms.Button();
+            this.btn_refresh = new System.Windows.Forms.Button();
+            this.btn_accept = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -56,6 +60,9 @@
             // 
             this.pnl_main.AutoScroll = true;
             this.pnl_main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.pnl_main.Controls.Add(this.btn_delete);
+            this.pnl_main.Controls.Add(this.btn_refresh);
+            this.pnl_main.Controls.Add(this.btn_accept);
             this.pnl_main.Controls.Add(this.dataGridView1);
             this.pnl_main.Controls.Add(this.label5);
             this.pnl_main.Controls.Add(this.label4);
@@ -68,12 +75,56 @@
             this.pnl_main.Size = new System.Drawing.Size(1043, 677);
             this.pnl_main.TabIndex = 33;
             // 
+            // btn_delete
+            // 
+            this.btn_delete.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_delete.BackgroundImage")));
+            this.btn_delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_delete.FlatAppearance.BorderSize = 0;
+            this.btn_delete.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.btn_delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_delete.Location = new System.Drawing.Point(926, 213);
+            this.btn_delete.Name = "btn_delete";
+            this.btn_delete.Size = new System.Drawing.Size(52, 55);
+            this.btn_delete.TabIndex = 14;
+            this.btn_delete.UseVisualStyleBackColor = true;
+            // 
+            // btn_refresh
+            // 
+            this.btn_refresh.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_refresh.BackgroundImage")));
+            this.btn_refresh.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_refresh.FlatAppearance.BorderSize = 0;
+            this.btn_refresh.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.btn_refresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_refresh.Location = new System.Drawing.Point(926, 69);
+            this.btn_refresh.Name = "btn_refresh";
+            this.btn_refresh.Size = new System.Drawing.Size(52, 55);
+            this.btn_refresh.TabIndex = 13;
+            this.btn_refresh.UseVisualStyleBackColor = true;
+            this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
+            // 
+            // btn_accept
+            // 
+            this.btn_accept.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_accept.BackgroundImage")));
+            this.btn_accept.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_accept.FlatAppearance.BorderSize = 0;
+            this.btn_accept.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.btn_accept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_accept.Location = new System.Drawing.Point(926, 141);
+            this.btn_accept.Name = "btn_accept";
+            this.btn_accept.Size = new System.Drawing.Size(52, 55);
+            this.btn_accept.TabIndex = 12;
+            this.btn_accept.UseVisualStyleBackColor = true;
+            // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
             this.dataGridView1.Location = new System.Drawing.Point(28, 67);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(739, 144);
+            this.dataGridView1.Size = new System.Drawing.Size(871, 563);
             this.dataGridView1.TabIndex = 6;
             // 
             // label5
@@ -164,5 +215,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btn_delete;
+        private System.Windows.Forms.Button btn_refresh;
+        private System.Windows.Forms.Button btn_accept;
     }
 }

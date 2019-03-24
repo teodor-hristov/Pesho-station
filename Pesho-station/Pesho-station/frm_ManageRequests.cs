@@ -13,6 +13,8 @@ namespace Pesho_station
 {
     public partial class frm_ManageRequests : Form
     {
+        DataTable dTable = new DataTable();
+
         public frm_ManageRequests()
         {
             InitializeComponent();
@@ -20,17 +22,42 @@ namespace Pesho_station
             this.pnl_main.AutoScroll = true;
         }
 
+        private int selectedId;
+
+        public int SelectedId
+        {
+            get { return selectedId; }
+            set { selectedId = value; }
+        }
+
+
         private void frm_ManageRequests_Load(object sender, EventArgs e)
         {
+            LoadDataSet();
+        }
+
+        private void DeleteSelectedRow()
+        {
+            //TODO:.. Sasho ti si
+        }
+
+        private void LoadDataSet()
+        {
+            dTable.Rows.Clear();
             MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
             MySqlCommand cmd = new MySqlCommand("select * from taxi", con);
             MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
             MyAdapter.SelectCommand = cmd;
-            DataTable dTable = new DataTable();
             MyAdapter.Fill(dTable);
+            dataGridView1.AllowUserToDeleteRows = true;
             dataGridView1.DataSource = dTable;
             con.Close();
+        }
+
+        private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            LoadDataSet();
         }
     }
 }
