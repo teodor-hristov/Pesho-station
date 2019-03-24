@@ -305,6 +305,7 @@
             this.Name = "frm_Client";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_client";
+            this.Load += new System.EventHandler(this.frm_Client_Load);
             this.pnl_top.ResumeLayout(false);
             this.pnl_top.PerformLayout();
             this.pnl_left.ResumeLayout(false);

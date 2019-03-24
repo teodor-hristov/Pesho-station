@@ -14,6 +14,7 @@ namespace Pesho_station
     {
         Map map = new Map();
         frm_callTaxi callTaxiForm = new frm_callTaxi();
+        
         public frm_Client()
         {
             InitializeComponent();
@@ -28,6 +29,11 @@ namespace Pesho_station
         {
             get { return username; }
             set { username = value; }
+        }
+
+        private void frm_Client_Load(object sender, EventArgs e)
+        {
+            callTaxiForm.Username = Username;
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
@@ -140,7 +146,5 @@ namespace Pesho_station
         {
             lbl_settings.ForeColor = Color.FromArgb(180, 180, 180);
         }
-
-        
     }
 }

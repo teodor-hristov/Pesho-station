@@ -21,6 +21,16 @@ namespace Pesho_station
         int noteTotalChars = 0;
         int noteMaxCharsOnLine = 37; //the char number to add a new line to the cmb
         //cmb max chars = 296
+        private string username;
+
+        public string Username
+        {
+            get { return username; }
+            set { username = value; }
+        }
+
+
+
 
         public frm_callTaxi()
         {
@@ -114,9 +124,7 @@ namespace Pesho_station
                 reader.Read();
             
             MessageBox.Show("You requsted a taxi");
-           
-
-            //TODO:..
+            
         }
 
 
