@@ -168,5 +168,10 @@ namespace Pesho_station
         {
             CheckForEmptyFields();
         }
+
+        private void frm_Register_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -118,10 +118,16 @@ namespace Pesho_station
         {
                 MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
                 con.Open();
-                string cmdString = "insert into taxi(number,type,pickupTime,pickUpAdress,dropUpAdress,driverNote) values('" + this.trackBar1.Value + "', '" + this.cmb_vehicleType.Text + "', '" + this.cmb_pickupTime.Text + "', '" + this.txt_pickupAddress.TextName + "', '" + this.txt_dropoffAddress.TextName + "', '" +this.richTextBox1.Text + "'); ";
-                MySqlCommand cmd = new MySqlCommand(cmdString, con);
-                var reader = cmd.ExecuteReader();
-                reader.Read();
+                string cmdString2 = "select * from register where username=@username";
+            MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
+            cmd2.Parameters.AddWithValue("@username", username);
+            var readUsernames = cmd2.ExecuteReader();
+            readUsernames.Read();
+            string cmdString = "insert into taxi(passengers,type,pickupTime,pickUpAdress,dropUpAdress,driverNote,callerPhone,callerFullname) values('" + this.trackBar1.Value + "', '" + this.cmb_vehicleType.Text + "', '" + this.cmb_pickupTime.Text + "', '" + this.txt_pickupAddress.TextName + "', '" + this.txt_dropoffAddress.TextName + "', '" +this.richTextBox1.Text + "', '" + readUsernames.GetString(3)+ "', '" +readUsernames.GetString(1) + "'); ";
+            readUsernames.Close();
+            MySqlCommand cmd = new MySqlCommand(cmdString, con);
+            var inserter = cmd.ExecuteReader();
+            inserter.Read();
             
             MessageBox.Show("You requsted a taxi");
             
@@ -144,6 +150,11 @@ namespace Pesho_station
         }
 
         private void btn_requestTaxi_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frm_callTaxi_Load(object sender, EventArgs e)
         {
 
         }

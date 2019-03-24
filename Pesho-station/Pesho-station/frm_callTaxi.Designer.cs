@@ -375,6 +375,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frm_callTaxi";
             this.Text = "frm_callTaxi";
+            this.Load += new System.EventHandler(this.frm_callTaxi_Load);
             this.pnl_main.ResumeLayout(false);
             this.pnl_main.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
