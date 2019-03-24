@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_TaxiDriver));
             this.pnl_top = new System.Windows.Forms.Panel();
+            this.pnl_main = new System.Windows.Forms.Panel();
             this.btn_minimize = new System.Windows.Forms.Label();
             this.btn_exit = new System.Windows.Forms.Label();
             this.pnl_left = new System.Windows.Forms.Panel();
@@ -42,12 +43,11 @@
             this.lbl_home = new System.Windows.Forms.Label();
             this.btn_settings = new System.Windows.Forms.Button();
             this.btn_time = new System.Windows.Forms.Button();
-            this.btn_phone = new System.Windows.Forms.Button();
+            this.btn_manageReq = new System.Windows.Forms.Button();
             this.btn_home = new System.Windows.Forms.Button();
             this.pnl_rightBorder = new System.Windows.Forms.Panel();
             this.lbl_fullName = new System.Windows.Forms.Label();
             this.btn_menu = new System.Windows.Forms.Button();
-            this.pnl_main = new System.Windows.Forms.Panel();
             this.pnl_top.SuspendLayout();
             this.pnl_left.SuspendLayout();
             this.SuspendLayout();
@@ -55,7 +55,6 @@
             // pnl_top
             // 
             this.pnl_top.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
-            this.pnl_top.Controls.Add(this.pnl_main);
             this.pnl_top.Controls.Add(this.btn_minimize);
             this.pnl_top.Controls.Add(this.btn_exit);
             this.pnl_top.Location = new System.Drawing.Point(3, 0);
@@ -65,6 +64,14 @@
             this.pnl_top.MouseDown += new System.Windows.Forms.MouseEventHandler(this.topPanel_MouseDown);
             this.pnl_top.MouseMove += new System.Windows.Forms.MouseEventHandler(this.topPanel_MouseMove);
             this.pnl_top.MouseUp += new System.Windows.Forms.MouseEventHandler(this.topPanel_MouseUp);
+            // 
+            // pnl_main
+            // 
+            this.pnl_main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.pnl_main.Location = new System.Drawing.Point(246, 30);
+            this.pnl_main.Name = "pnl_main";
+            this.pnl_main.Size = new System.Drawing.Size(1054, 720);
+            this.pnl_main.TabIndex = 11;
             // 
             // btn_minimize
             // 
@@ -104,7 +111,7 @@
             this.pnl_left.Controls.Add(this.lbl_home);
             this.pnl_left.Controls.Add(this.btn_settings);
             this.pnl_left.Controls.Add(this.btn_time);
-            this.pnl_left.Controls.Add(this.btn_phone);
+            this.pnl_left.Controls.Add(this.btn_manageReq);
             this.pnl_left.Controls.Add(this.btn_home);
             this.pnl_left.Controls.Add(this.pnl_rightBorder);
             this.pnl_left.Controls.Add(this.lbl_fullName);
@@ -220,20 +227,20 @@
             this.btn_time.Enter += new System.EventHandler(this.btn_time_Enter);
             this.btn_time.Leave += new System.EventHandler(this.btn_time_Leave);
             // 
-            // btn_phone
+            // btn_manageReq
             // 
-            this.btn_phone.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_phone.BackgroundImage")));
-            this.btn_phone.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btn_phone.FlatAppearance.BorderSize = 0;
-            this.btn_phone.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
-            this.btn_phone.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_phone.Location = new System.Drawing.Point(16, 265);
-            this.btn_phone.Name = "btn_phone";
-            this.btn_phone.Size = new System.Drawing.Size(40, 40);
-            this.btn_phone.TabIndex = 12;
-            this.btn_phone.UseVisualStyleBackColor = true;
-            this.btn_phone.Enter += new System.EventHandler(this.btn_phone_Enter);
-            this.btn_phone.Leave += new System.EventHandler(this.btn_phone_Leave);
+            this.btn_manageReq.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_manageReq.BackgroundImage")));
+            this.btn_manageReq.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_manageReq.FlatAppearance.BorderSize = 0;
+            this.btn_manageReq.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.btn_manageReq.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_manageReq.Location = new System.Drawing.Point(16, 265);
+            this.btn_manageReq.Name = "btn_manageReq";
+            this.btn_manageReq.Size = new System.Drawing.Size(40, 40);
+            this.btn_manageReq.TabIndex = 12;
+            this.btn_manageReq.UseVisualStyleBackColor = true;
+            this.btn_manageReq.Enter += new System.EventHandler(this.btn_phone_Enter);
+            this.btn_manageReq.Leave += new System.EventHandler(this.btn_phone_Leave);
             // 
             // btn_home
             // 
@@ -284,20 +291,13 @@
             this.btn_menu.UseVisualStyleBackColor = true;
             this.btn_menu.Click += new System.EventHandler(this.btn_menu_Click);
             // 
-            // pnl_main
-            // 
-            this.pnl_main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
-            this.pnl_main.Location = new System.Drawing.Point(246, 28);
-            this.pnl_main.Name = "pnl_main";
-            this.pnl_main.Size = new System.Drawing.Size(1054, 720);
-            this.pnl_main.TabIndex = 11;
-            // 
             // frm_TaxiDriver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
             this.ClientSize = new System.Drawing.Size(1296, 754);
+            this.Controls.Add(this.pnl_main);
             this.Controls.Add(this.pnl_left);
             this.Controls.Add(this.pnl_top);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -323,7 +323,7 @@
         private System.Windows.Forms.Panel pnl_rightBorder;
         private System.Windows.Forms.Button btn_settings;
         private System.Windows.Forms.Button btn_time;
-        private System.Windows.Forms.Button btn_phone;
+        private System.Windows.Forms.Button btn_manageReq;
         private System.Windows.Forms.Button btn_home;
         private System.Windows.Forms.Label lbl_settings;
         private System.Windows.Forms.Label lbl_time;

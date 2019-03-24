@@ -13,6 +13,7 @@ namespace Pesho_station
     public partial class frm_TaxiDriver : Form
     {
         Map map = new Map();
+        frm_ManageRequests manageRequestsForm = new frm_ManageRequests();
         public frm_TaxiDriver()
         {
             InitializeComponent();
@@ -87,17 +88,23 @@ namespace Pesho_station
         {
             lbl_home.ForeColor = Color.FromArgb(234, 157, 30);
             pnl_leftYellow.Location = new Point(1, 179);
+            map.Visible = true;
         }
 
         private void btn_home_Leave(object sender, EventArgs e)
         {
             lbl_home.ForeColor = Color.FromArgb(180, 180, 180);
+            map.Visible = false;
         }
 
         private void btn_phone_Enter(object sender, EventArgs e)
         {
             lbl_phone.ForeColor = Color.FromArgb(234, 157, 30);
             pnl_leftYellow.Location = new Point(1, 265);
+            map.Visible = false;
+            map.Hide();
+            pnl_main.Controls.Add(manageRequestsForm);
+            manageRequestsForm.Show();
         }
 
         private void btn_phone_Leave(object sender, EventArgs e)

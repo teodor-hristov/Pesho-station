@@ -102,6 +102,12 @@
     <Compile Include="frm_Login.Designer.cs">
       <DependentUpon>frm_Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_ManageRequests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ManageRequests.Designer.cs">
+      <DependentUpon>frm_ManageRequests.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_TaxiDriver.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +136,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Login.resx">
       <DependentUpon>frm_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ManageRequests.resx">
+      <DependentUpon>frm_ManageRequests.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_TaxiDriver.resx">
       <DependentUpon>frm_TaxiDriver.cs</DependentUpon>
