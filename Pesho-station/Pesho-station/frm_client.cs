@@ -146,5 +146,23 @@ namespace Pesho_station
         {
             lbl_settings.ForeColor = Color.FromArgb(180, 180, 180);
         }
+
+        private void btn_logout_Click(object sender, EventArgs e)
+        {
+            Logout();
+        }
+
+        private void Logout()
+        {
+            this.Hide();
+            frm_Login loginForm = new frm_Login();
+            loginForm.ShowDialog();
+            this.Close();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Logout();
+        }
     }
 }

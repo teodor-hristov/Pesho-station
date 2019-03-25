@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_TaxiDriver));
             this.pnl_top = new System.Windows.Forms.Panel();
-            this.pnl_main = new System.Windows.Forms.Panel();
             this.btn_minimize = new System.Windows.Forms.Label();
             this.btn_exit = new System.Windows.Forms.Label();
+            this.pnl_main = new System.Windows.Forms.Panel();
             this.pnl_left = new System.Windows.Forms.Panel();
             this.pnl_leftYellow = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -65,14 +65,6 @@
             this.pnl_top.MouseMove += new System.Windows.Forms.MouseEventHandler(this.topPanel_MouseMove);
             this.pnl_top.MouseUp += new System.Windows.Forms.MouseEventHandler(this.topPanel_MouseUp);
             // 
-            // pnl_main
-            // 
-            this.pnl_main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
-            this.pnl_main.Location = new System.Drawing.Point(246, 30);
-            this.pnl_main.Name = "pnl_main";
-            this.pnl_main.Size = new System.Drawing.Size(1054, 720);
-            this.pnl_main.TabIndex = 11;
-            // 
             // btn_minimize
             // 
             this.btn_minimize.AutoSize = true;
@@ -98,6 +90,14 @@
             this.btn_exit.TabIndex = 6;
             this.btn_exit.Text = "X";
             this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
+            // 
+            // pnl_main
+            // 
+            this.pnl_main.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
+            this.pnl_main.Location = new System.Drawing.Point(246, 30);
+            this.pnl_main.Name = "pnl_main";
+            this.pnl_main.Size = new System.Drawing.Size(1054, 720);
+            this.pnl_main.TabIndex = 11;
             // 
             // pnl_left
             // 
@@ -139,6 +139,7 @@
             this.label1.Size = new System.Drawing.Size(102, 30);
             this.label1.TabIndex = 20;
             this.label1.Text = "Log out";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btn_logout
             // 
@@ -152,6 +153,7 @@
             this.btn_logout.Size = new System.Drawing.Size(40, 40);
             this.btn_logout.TabIndex = 19;
             this.btn_logout.UseVisualStyleBackColor = true;
+            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
             // 
             // lbl_settings
             // 

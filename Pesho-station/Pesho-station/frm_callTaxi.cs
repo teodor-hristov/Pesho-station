@@ -116,9 +116,9 @@ namespace Pesho_station
 
         private void RequestTaxi()
         {
-                MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
-                con.Open();
-                string cmdString2 = "select * from register where username=@username";
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            con.Open();
+            string cmdString2 = "select * from register where username=@username";
             MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
             cmd2.Parameters.AddWithValue("@username", username);
             var readUsernames = cmd2.ExecuteReader();
@@ -130,7 +130,8 @@ namespace Pesho_station
             inserter.Read();
             
             MessageBox.Show("You requsted a taxi");
-            
+            lbl_status.Visible = true;
+
         }
 
 
@@ -144,19 +145,10 @@ namespace Pesho_station
             RequestTaxi();
         }
 
-        private void pnl_main_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void btn_requestTaxi_Click(object sender, EventArgs e)
         {
-
+            RequestTaxi();
         }
-
-        private void frm_callTaxi_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
