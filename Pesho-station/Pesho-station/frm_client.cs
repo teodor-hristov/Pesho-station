@@ -146,23 +146,19 @@ namespace Pesho_station
         {
             lbl_settings.ForeColor = Color.FromArgb(180, 180, 180);
         }
-
-        private void btn_logout_Click(object sender, EventArgs e)
+        
+        private void btnLogout_Click(object sender, EventArgs e)
         {
-            Logout();
-        }
-
-        private void Logout()
-        {
-            this.Hide();
-            frm_Login loginForm = new frm_Login();
-            loginForm.ShowDialog();
+            System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(OpenLoginForm)); //creating a new thread with a login form
+            this.Dispose();
+            callTaxiForm.Dispose();
             this.Close();
+            t.Start();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        public static void OpenLoginForm()
         {
-            Logout();
+            Application.Run(new frm_Login());
         }
     }
 }
