@@ -98,6 +98,7 @@
             this.pnl_main.Name = "pnl_main";
             this.pnl_main.Size = new System.Drawing.Size(1054, 720);
             this.pnl_main.TabIndex = 11;
+            this.pnl_main.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_main_Paint);
             // 
             // pnl_left
             // 
@@ -120,6 +121,7 @@
             this.pnl_left.Name = "pnl_left";
             this.pnl_left.Size = new System.Drawing.Size(245, 727);
             this.pnl_left.TabIndex = 9;
+            this.pnl_left.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_left_Paint);
             // 
             // pnl_leftYellow
             // 
@@ -305,6 +307,8 @@
             this.Name = "frm_TaxiDriver";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frm_TaxiDriver";
+            this.Load += new System.EventHandler(this.frm_TaxiDriver_Load_1);
+            this.Click += new System.EventHandler(this.frm_TaxiDriver_Click);
             this.pnl_top.ResumeLayout(false);
             this.pnl_top.PerformLayout();
             this.pnl_left.ResumeLayout(false);

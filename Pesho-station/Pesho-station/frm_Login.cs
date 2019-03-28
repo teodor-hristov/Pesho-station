@@ -93,7 +93,7 @@ namespace Pesho_station
             {
                 frm_Client clientForm = new frm_Client();
                 clientForm.Username = txt_usernameLogin.TextName;
-                clientForm.FullName = reader.GetString(1);
+                clientForm.Phone = reader.GetString(3);
                 this.Hide();
                 clientForm.ShowDialog();
                 this.Close();
@@ -105,7 +105,7 @@ namespace Pesho_station
             if (drivers.HasRows)
             {
                 frm_TaxiDriver taxiDriverForm = new frm_TaxiDriver();
-                taxiDriverForm.DriverName = txt_usernameLogin.TextName;
+                taxiDriverForm.DriverNameLogin = txt_usernameLogin.TextName;
                 this.Hide();
                 taxiDriverForm.ShowDialog();
                 this.Close();

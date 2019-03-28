@@ -23,6 +23,13 @@ namespace Pesho_station
             dataGridView1.AllowUserToAddRows = false;
         }
 
+        private string driverName;
+
+        public string DriverName
+        {
+            get { return driverName; }
+            set { driverName = value; }
+        }
 
         private int id;
 
@@ -165,12 +172,36 @@ namespace Pesho_station
             refreshAutoIncrement.Close();
         }
 
+        private string CheckDriverCarType()
+        {
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            con.Open();
+            string cmdString = "select * from drivers where driver_name=@driverName ";
+            MySqlCommand cmd = new MySqlCommand(cmdString, con);
+            cmd.Parameters.AddWithValue("@DriverName", DriverName);
+            MessageBox.Show(DriverName);
+            var getCarType = cmd.ExecuteReader();
+            getCarType.Read();
+            if (getCarType.HasRows)
+            {
+                return getCarType.GetString(3);
+            }
+            else
+            {
+                return "s";
+            }
+
+
+        }
+
         private void LoadDataSet()
         {
             dTable.Rows.Clear();
             MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
-            MySqlCommand cmd = new MySqlCommand("select * from taxi", con);
+            MySqlCommand cmd = new MySqlCommand("select * from taxi where type=@type ", con);
+            cmd.Parameters.AddWithValue("@type", CheckDriverCarType());
+            MessageBox.Show(CheckDriverCarType());
             MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
             MyAdapter.SelectCommand = cmd;
             MyAdapter.Fill(dTable);

@@ -14,7 +14,8 @@ namespace Pesho_station
     {
         Map map = new Map();
         frm_callTaxi callTaxiForm = new frm_callTaxi();
-        
+
+
         public frm_Client()
         {
             InitializeComponent();
@@ -23,12 +24,20 @@ namespace Pesho_station
             map.Show();
         }
 
-        private string fullName;
+        private string phone;
 
-        public string FullName
+        public string Phone
         {
-            get { return fullName; }
-            set { fullName = value; }
+            get { return phone; }
+            set { phone = value; }
+        }
+
+        private string driverName;
+
+        public string DriverName
+        {
+            get { return driverName; }
+            set { driverName = value; }
         }
 
         private string username;
@@ -42,7 +51,7 @@ namespace Pesho_station
         private void frm_Client_Load(object sender, EventArgs e)
         {
             callTaxiForm.Username = Username;
-            callTaxiForm.FullName = FullName;
+            callTaxiForm.Phone = Phone;
         }
 
         private void btn_exit_Click(object sender, EventArgs e)

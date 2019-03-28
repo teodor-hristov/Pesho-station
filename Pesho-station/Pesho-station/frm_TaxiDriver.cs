@@ -24,14 +24,21 @@ namespace Pesho_station
         }
 
 
-
-
         private string driverName;
 
         public string DriverName
         {
             get { return driverName; }
             set { driverName = value; }
+        }
+
+
+        private string driverNameLogin;
+
+        public string DriverNameLogin
+        {
+            get { return driverNameLogin; }
+            set { driverNameLogin = value; }
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
@@ -158,6 +165,26 @@ namespace Pesho_station
         public static void OpenLoginForm()
         {
             Application.Run(new frm_Login());
+        }
+
+        private void pnl_left_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnl_main_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void frm_TaxiDriver_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frm_TaxiDriver_Load_1(object sender, EventArgs e)
+        {
+            manageRequestsForm.DriverName = DriverNameLogin;
         }
     }
 }

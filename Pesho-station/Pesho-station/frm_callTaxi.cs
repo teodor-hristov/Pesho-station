@@ -21,6 +21,7 @@ namespace Pesho_station
         int noteTotalChars = 0;
         int noteMaxCharsOnLine = 37; //the char number to add a new line to the cmb
         //cmb max chars = 296
+        bool taxiRequested = false;
         private string username;
 
         public string Username
@@ -29,12 +30,13 @@ namespace Pesho_station
             set { username = value; }
         }
 
-        private string fullName;
 
-        public string FullName
+        private string phone;
+
+        public string Phone
         {
-            get { return fullName; }
-            set { fullName = value; }
+            get { return phone; }
+            set { phone = value; }
         }
 
 
@@ -160,28 +162,43 @@ namespace Pesho_station
         //    getFullNameOfCaller.Read();
             
         //    return getFullNameOfCaller.GetString(3);
-
         //}
+
+        private void CheckForRequest()
+        {
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            con.Open();
+            string cmdString3 = "select phone_caller_taxi from call_driver where phone_caller_taxi=@phone";
+            MySqlCommand cmd = new MySqlCommand(cmdString3, con);
+            cmd.Parameters.AddWithValue("@phone", Phone);
+            var checker = cmd.ExecuteReader();
+            checker.Read();
+            if (checker.HasRows)
+            {
+                lbl_status.Visible = true;
+                lbl_status.Text = "Accepted";
+            }
+        }
 
         private void statusRefresh()
         {
             MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
-            string cmdString2 = "select * from taxi where callerFullName=@FullName ";
+            string cmdString2 = "select callerPhone from taxi where callerPhone=@phone ";
             MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
-            cmd2.Parameters.AddWithValue("@fullName", FullName);
-            MessageBox.Show(FullName);
+            cmd2.Parameters.AddWithValue("@phone", Phone);
+            MessageBox.Show(phone);
             var reader = cmd2.ExecuteReader();
             reader.Read();
             if (reader.HasRows)
             {
+
                 lbl_status.Visible = true;
                 lbl_status.Text = "Pending";
             }
             else
             {
-                lbl_status.Visible = true;
-                lbl_status.Text = "Accepted";
+                CheckForRequest();
             }
 
         }
@@ -189,6 +206,7 @@ namespace Pesho_station
 
         private void btn_requestTaxi_Enter(object sender, EventArgs e)
         {
+            taxiRequested = true;
             RequestTaxi();
         }
 
@@ -199,6 +217,7 @@ namespace Pesho_station
 
         private void btn_requestTaxi_Click(object sender, EventArgs e)
         {
+            taxiRequested = true;
             RequestTaxi();
         }
 
