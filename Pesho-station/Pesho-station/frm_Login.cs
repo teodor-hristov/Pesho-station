@@ -71,43 +71,49 @@ namespace Pesho_station
 
         private void btn_login_Click(object sender, EventArgs e)
         {
-            //temporary driver login
-            if(txt_usernameLogin.TextName == "admin" && txt_passwordLogin.TextName == "admin")
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            con.Open();
+            string cmdString = "select * from register where password=@password and username=@username";
+            MySqlCommand cmd = new MySqlCommand(cmdString, con);
+            cmd.Parameters.AddWithValue("@password", txt_passwordLogin.TextName);
+            cmd.Parameters.AddWithValue("@username", txt_usernameLogin.TextName);
+
+
+
+            var reader = cmd.ExecuteReader();
+            reader.Read();
+
+            string cmdString2 = "select * from drivers where driver_password=@driver_password and driver_name=@driver_name";
+            MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
+            cmd2.Parameters.AddWithValue("@driver_password", txt_passwordLogin.TextName);
+            cmd2.Parameters.AddWithValue("@driver_name", txt_usernameLogin.TextName);
+
+
+            if (reader.HasRows)
+            {
+                frm_Client clientForm = new frm_Client();
+                clientForm.Username = txt_usernameLogin.TextName;
+                clientForm.FullName = reader.GetString(1);
+                this.Hide();
+                clientForm.ShowDialog();
+                this.Close();
+                reader.Close();
+            }
+            reader.Close();
+            var drivers = cmd2.ExecuteReader();
+            drivers.Read();
+            if (drivers.HasRows)
             {
                 frm_TaxiDriver taxiDriverForm = new frm_TaxiDriver();
+                taxiDriverForm.DriverName = txt_usernameLogin.TextName;
                 this.Hide();
                 taxiDriverForm.ShowDialog();
                 this.Close();
             }
             else
             {
-                MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
-                con.Open();
-                string cmdString = "select * from register where password=@password and username=@username";
-                MySqlCommand cmd = new MySqlCommand(cmdString, con);
-                cmd.Parameters.AddWithValue("@password", txt_passwordLogin.TextName);
-                cmd.Parameters.AddWithValue("@username", txt_usernameLogin.TextName);
-
-                var reader = cmd.ExecuteReader();
-                reader.Read();
-
-                if (reader.HasRows)
-                {
-                    frm_Client clientForm = new frm_Client();
-                    clientForm.Username = txt_usernameLogin.TextName;
-                    this.Hide();
-                    clientForm.ShowDialog();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Invalid credentials");
-                }
-
-                con.Close();
+                MessageBox.Show("Invalid credentials");
             }
-            
-
         }
         private void frm_Login_Load(object sender, EventArgs e)
         {

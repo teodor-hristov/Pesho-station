@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_callTaxi));
             this.pnl_main = new System.Windows.Forms.Panel();
+            this.lbl_status = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.txt_dropoffAddress = new JMaterialTextbox.JMaterialTextbox();
             this.txt_pickupAddress = new JMaterialTextbox.JMaterialTextbox();
             this.cmb_pickupTime = new System.Windows.Forms.ComboBox();
@@ -50,14 +52,14 @@
             this.lbl_pickupAddress = new System.Windows.Forms.Label();
             this.lbl_pickupTime = new System.Windows.Forms.Label();
             this.btn_phone = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbl_status = new System.Windows.Forms.Label();
+            this.btn_refresh = new System.Windows.Forms.Button();
             this.pnl_main.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnl_main
             // 
+            this.pnl_main.Controls.Add(this.btn_refresh);
             this.pnl_main.Controls.Add(this.lbl_status);
             this.pnl_main.Controls.Add(this.label1);
             this.pnl_main.Controls.Add(this.txt_dropoffAddress);
@@ -84,6 +86,29 @@
             this.pnl_main.Name = "pnl_main";
             this.pnl_main.Size = new System.Drawing.Size(1074, 623);
             this.pnl_main.TabIndex = 32;
+            // 
+            // lbl_status
+            // 
+            this.lbl_status.AutoSize = true;
+            this.lbl_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_status.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(14)))));
+            this.lbl_status.Location = new System.Drawing.Point(518, 39);
+            this.lbl_status.Name = "lbl_status";
+            this.lbl_status.Size = new System.Drawing.Size(66, 18);
+            this.lbl_status.TabIndex = 48;
+            this.lbl_status.Text = "pending";
+            this.lbl_status.Visible = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.label1.Location = new System.Drawing.Point(440, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 24);
+            this.label1.TabIndex = 47;
+            this.label1.Text = "Status:";
             // 
             // txt_dropoffAddress
             // 
@@ -368,28 +393,15 @@
             this.btn_phone.UseVisualStyleBackColor = true;
             this.btn_phone.Enter += new System.EventHandler(this.btn_phone_Enter);
             // 
-            // label1
+            // btn_refresh
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.label1.Location = new System.Drawing.Point(440, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 24);
-            this.label1.TabIndex = 47;
-            this.label1.Text = "Status:";
-            // 
-            // lbl_status
-            // 
-            this.lbl_status.AutoSize = true;
-            this.lbl_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_status.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(111)))), ((int)(((byte)(14)))));
-            this.lbl_status.Location = new System.Drawing.Point(518, 39);
-            this.lbl_status.Name = "lbl_status";
-            this.lbl_status.Size = new System.Drawing.Size(66, 18);
-            this.lbl_status.TabIndex = 48;
-            this.lbl_status.Text = "pending";
-            this.lbl_status.Visible = false;
+            this.btn_refresh.Location = new System.Drawing.Point(657, 35);
+            this.btn_refresh.Name = "btn_refresh";
+            this.btn_refresh.Size = new System.Drawing.Size(106, 20);
+            this.btn_refresh.TabIndex = 49;
+            this.btn_refresh.Text = "Refresh";
+            this.btn_refresh.UseVisualStyleBackColor = true;
+            this.btn_refresh.Click += new System.EventHandler(this.btn_refresh_Click);
             // 
             // frm_callTaxi
             // 
@@ -433,5 +445,6 @@
         private JMaterialTextbox.JMaterialTextbox txt_pickupAddress;
         private System.Windows.Forms.Label lbl_status;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_refresh;
     }
 }

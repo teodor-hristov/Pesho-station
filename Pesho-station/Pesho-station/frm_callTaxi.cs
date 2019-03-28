@@ -29,7 +29,22 @@ namespace Pesho_station
             set { username = value; }
         }
 
+        private string fullName;
 
+        public string FullName
+        {
+            get { return fullName; }
+            set { fullName = value; }
+        }
+
+
+        private string driverName;
+
+        public string DriverName
+        {
+            get { return driverName; }
+            set { driverName = value; }
+        }
 
 
         public frm_callTaxi()
@@ -131,6 +146,43 @@ namespace Pesho_station
             
             MessageBox.Show("You requsted a taxi");
             lbl_status.Visible = true;
+        }
+
+        //public string GetFullNameOfCaller()
+        //{
+        //    MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+        //    con.Open();
+        //    string cmdString2 = "select * from taxi where callerFullName=@FullName";
+        //    MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
+        //    cmd2.Parameters.AddWithValue("@FullName", FullName);
+        //    MessageBox.Show(DriverName);
+        //    var getFullNameOfCaller = cmd2.ExecuteReader();
+        //    getFullNameOfCaller.Read();
+            
+        //    return getFullNameOfCaller.GetString(3);
+
+        //}
+
+        private void statusRefresh()
+        {
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            con.Open();
+            string cmdString2 = "select * from taxi where callerFullName=@FullName ";
+            MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
+            cmd2.Parameters.AddWithValue("@fullName", FullName);
+            MessageBox.Show(FullName);
+            var reader = cmd2.ExecuteReader();
+            reader.Read();
+            if (reader.HasRows)
+            {
+                lbl_status.Visible = true;
+                lbl_status.Text = "Pending";
+            }
+            else
+            {
+                lbl_status.Visible = true;
+                lbl_status.Text = "Accepted";
+            }
 
         }
 
@@ -149,6 +201,10 @@ namespace Pesho_station
         {
             RequestTaxi();
         }
-        
+
+        private void btn_refresh_Click(object sender, EventArgs e)
+        {
+            statusRefresh();
+        }
     }
 }

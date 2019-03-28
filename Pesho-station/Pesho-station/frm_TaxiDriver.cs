@@ -20,6 +20,18 @@ namespace Pesho_station
             pnl_main.Controls.Add(map);
             map.Width = 1054;
             map.Show();
+            //manageRequestsForm.DriverName = DriverName;
+        }
+
+
+
+
+        private string driverName;
+
+        public string DriverName
+        {
+            get { return driverName; }
+            set { driverName = value; }
         }
 
         private void btn_exit_Click(object sender, EventArgs e)

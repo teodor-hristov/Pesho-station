@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Pesho_station
 {
-    public partial class frm_ManageRequests : Form
+    public partial class frm_ManageRequests : Form 
     {
         DataTable dTable = new DataTable();
 
@@ -22,6 +22,7 @@ namespace Pesho_station
             this.pnl_main.AutoScroll = true;
             dataGridView1.AllowUserToAddRows = false;
         }
+
 
         private int id;
 
@@ -35,7 +36,17 @@ namespace Pesho_station
         public string PhoneNumber { get; set; }
         public string PickupAddress { get; set; }
         public string DropoffAddress { get; set; }
-        public string CarType { get; set; }
+        private string carType;
+
+        public string CarType
+        {
+            get { return carType; }
+            set
+            {
+                carType = value;
+            }
+        }
+
         public int PickupTime { get; set; }
         public int NumberPassengers { get; set; }
         public string Note { get; set; }
@@ -70,10 +81,26 @@ namespace Pesho_station
             }
         }
 
+
+        public string GetDriverName()
+        {
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            con.Open();
+            string cmdString2 = "select * from drivers where taxi_type=@driverName";
+            MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
+            cmd2.Parameters.AddWithValue("@driverName", carType);
+            var getDriverName = cmd2.ExecuteReader();
+            getDriverName.Read();
+            return getDriverName.GetString(1);
+
+        }
+
         private void DeleteSelectedRow()
         {
+            CallDriver();
             if (HasRows())
             {
+
                 //deleting a row
                 MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
                 con.Open();
@@ -87,6 +114,27 @@ namespace Pesho_station
                 AlterAutoIncrement(con, maxid);
                 LoadDataSet();
 
+            }
+        }
+        private void CallDriver()
+        {
+
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            con.Open();
+            string cmdString = "select * from taxi WHERE callerPhone=@callerPhone";
+            MySqlCommand cmd = new MySqlCommand(cmdString, con);
+            cmd.Parameters.AddWithValue("@callerPhone", PhoneNumber);
+            var getDelData = cmd.ExecuteReader();
+            getDelData.Read();
+            string cmdString2 = "INSERT into call_driver(driver_name,phone_caller_taxi,name_caller,type_taxi) values('" + GetDriverName() + "','" + getDelData.GetString(7) + "','" + FullName + "','" + CarType + "');";
+            if (getDelData.HasRows)
+            {
+                MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
+                getDelData.Close();
+                MessageBox.Show("cappa");
+                var insertDriver = cmd2.ExecuteReader();
+                insertDriver.Read();
+                insertDriver.Close();
             }
         }
         private int FindMaxId(MySqlConnection con)  //selecting max id in the DB
@@ -141,6 +189,7 @@ namespace Pesho_station
 
         private void btn_accept_Click(object sender, EventArgs e)
         {
+
             DeleteSelectedRow();
         }
 
@@ -160,6 +209,9 @@ namespace Pesho_station
                 Note = row.Cells["driverNote"].Value.ToString();
             }
         }
-           
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

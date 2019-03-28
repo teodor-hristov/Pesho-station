@@ -23,6 +23,14 @@ namespace Pesho_station
             map.Show();
         }
 
+        private string fullName;
+
+        public string FullName
+        {
+            get { return fullName; }
+            set { fullName = value; }
+        }
+
         private string username;
 
         public string Username
@@ -34,6 +42,7 @@ namespace Pesho_station
         private void frm_Client_Load(object sender, EventArgs e)
         {
             callTaxiForm.Username = Username;
+            callTaxiForm.FullName = FullName;
         }
 
         private void btn_exit_Click(object sender, EventArgs e)
