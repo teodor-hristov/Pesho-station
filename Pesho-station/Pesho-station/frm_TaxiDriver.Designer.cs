@@ -35,7 +35,7 @@
             this.pnl_main = new System.Windows.Forms.Panel();
             this.pnl_left = new System.Windows.Forms.Panel();
             this.pnl_leftYellow = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbl_logout = new System.Windows.Forms.Label();
             this.btn_logout = new System.Windows.Forms.Button();
             this.lbl_settings = new System.Windows.Forms.Label();
             this.lbl_time = new System.Windows.Forms.Label();
@@ -103,7 +103,7 @@
             // 
             this.pnl_left.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.pnl_left.Controls.Add(this.pnl_leftYellow);
-            this.pnl_left.Controls.Add(this.label1);
+            this.pnl_left.Controls.Add(this.lbl_logout);
             this.pnl_left.Controls.Add(this.btn_logout);
             this.pnl_left.Controls.Add(this.lbl_settings);
             this.pnl_left.Controls.Add(this.lbl_time);
@@ -129,17 +129,16 @@
             this.pnl_leftYellow.Size = new System.Drawing.Size(5, 45);
             this.pnl_leftYellow.TabIndex = 21;
             // 
-            // label1
+            // lbl_logout
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
-            this.label1.Location = new System.Drawing.Point(70, 677);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 30);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Log out";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.lbl_logout.AutoSize = true;
+            this.lbl_logout.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lbl_logout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.lbl_logout.Location = new System.Drawing.Point(70, 677);
+            this.lbl_logout.Name = "lbl_logout";
+            this.lbl_logout.Size = new System.Drawing.Size(102, 30);
+            this.lbl_logout.TabIndex = 20;
+            this.lbl_logout.Text = "Log out";
             // 
             // btn_logout
             // 
@@ -153,7 +152,7 @@
             this.btn_logout.Size = new System.Drawing.Size(40, 40);
             this.btn_logout.TabIndex = 19;
             this.btn_logout.UseVisualStyleBackColor = true;
-            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
+            this.btn_logout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // lbl_settings
             // 
@@ -331,7 +330,7 @@
         private System.Windows.Forms.Label lbl_time;
         private System.Windows.Forms.Label lbl_phone;
         private System.Windows.Forms.Label lbl_home;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_logout;
         private System.Windows.Forms.Button btn_logout;
         private System.Windows.Forms.Panel pnl_leftYellow;
         private System.Windows.Forms.Panel pnl_main;

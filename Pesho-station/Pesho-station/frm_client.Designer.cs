@@ -131,7 +131,7 @@
             this.label1.Size = new System.Drawing.Size(102, 30);
             this.label1.TabIndex = 20;
             this.label1.Text = "Log out";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btn_logout
             // 
@@ -145,7 +145,7 @@
             this.btn_logout.Size = new System.Drawing.Size(40, 40);
             this.btn_logout.TabIndex = 19;
             this.btn_logout.UseVisualStyleBackColor = true;
-            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
+            this.btn_logout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // lbl_settings
             // 
