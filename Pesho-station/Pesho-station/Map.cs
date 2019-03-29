@@ -1,15 +1,9 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 
 namespace Pesho_station
@@ -23,8 +17,6 @@ namespace Pesho_station
             this.AutoScroll = true;
 
             FixBrowserEmulation();
-
-            InitializeComponent();
 
             bool designTime = LicenseManager.UsageMode == LicenseUsageMode.Designtime;
             if (!designTime)
