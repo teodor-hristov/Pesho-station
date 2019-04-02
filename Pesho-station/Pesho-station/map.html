@@ -214,7 +214,17 @@
     <div id="panel" background:inherit"></div>
 
     <script type="text/javascript" charset="UTF-8">
-
+        /**
+         * /@exports
+         *Getting gps coordinates
+         * @param platform
+         */
+        
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.watchPosition(calculateRouteFromAtoB);
+            } 
+        }
 
         /**
          * Calculates and displays a car route from the Brandenburg Gate in the centre of Berlin
@@ -232,7 +242,7 @@
                     representation: 'display',
                     routeattributes: 'waypoints,summary,shape,legs',
                     maneuverattributes: 'direction,action',
-                    waypoint0: '42.13333,24.6760253', // Lovech
+                    waypoint0: '' + platform.coords.latitude + ','+ platform.coords.longitude + '', // Lovech
                     waypoint1: '43.4211722,24.5795139'  // Pleven
                     //test
                 };

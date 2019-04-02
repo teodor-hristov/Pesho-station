@@ -11,9 +11,8 @@ using Microsoft.Win32;
 namespace Pesho_station
 {
     public partial class Map : Form
-    {
+    { 
         private string docFile = Path.Combine(Application.StartupPath, "..\\..\\map.html");
-
         public string[] GetParameters(string docFile,string text)
         {
             string[] lines = File.ReadAllLines(docFile);
@@ -48,6 +47,7 @@ namespace Pesho_station
             writer.Write(content);
             writer.Close();
         }
+        
         public Map()
         {
             InitializeComponent();
@@ -55,8 +55,7 @@ namespace Pesho_station
             this.AutoScroll = true;
             FixBrowserEmulation();
 
-            string waypoint0Lat = GetParameters(docFile, "waypoint0")[1];//dumata e waypoint0/1 zashtoto tova hvashta reda v koito e samata duma
-            string waypoint0Long = GetParameters(docFile, "waypoint0")[2];
+            
             string waypoint1Lat = GetParameters(docFile, "waypoint1")[1];
             string waypoint1Long = GetParameters(docFile, "waypoint1")[2];
 
@@ -64,8 +63,7 @@ namespace Pesho_station
             if (!designTime)
             {
                 mapBrowser.ScriptErrorsSuppressed = false;
-                
-                ChangeDestinationPins(docFile,waypoint0Lat, "42.13333");
+                //ChangeDestinationPins(docFile, waypoint0Lat, location.Lat);
                 string documentText = File.ReadAllText(docFile);
                 mapBrowser.DocumentText = documentText;
                 
