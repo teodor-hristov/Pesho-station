@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
@@ -11,11 +12,13 @@ namespace Pesho_station
 {
     public partial class Map : Form
     {
-        public string GetParameters(string docFile,string text)
+        private string docFile;
+        public string[] GetParameters(string docFile,string text)
         {
-            var lines = File.ReadAllLines(docFile);
-
-            var firstFound = false;
+            string[] lines = File.ReadAllLines(docFile);
+            string coordsLine;
+            string[] split = new string[4];
+            bool firstFound = false;
             for (int index = 0; index < lines.Count(); index++)
             {
                 if (!firstFound && lines[index].Contains(text))
@@ -24,13 +27,26 @@ namespace Pesho_station
                 }
                 if (firstFound && lines[index].Contains(text))
                 {
-                    //do, what you want, and exit the loop
-                    return lines[index];
+                    coordsLine =  lines[index];
+                    split = coordsLine.Split(new char[] { '\'', ',' }, StringSplitOptions.RemoveEmptyEntries);
+                    return split;
                 }
             }
-            return "";
+            
+            return split;
         }
+        static public void ChangeDestinationPins(string filePath, string searchText, string replaceText)
+        {
+            StreamReader reader = new StreamReader(filePath);
+            string content = reader.ReadToEnd();
+            reader.Close();
 
+            content = Regex.Replace(content, searchText, replaceText);
+
+            StreamWriter writer = new StreamWriter(filePath);
+            writer.Write(content);
+            writer.Close();
+        }
         public Map()
         {
             InitializeComponent();
@@ -38,15 +54,21 @@ namespace Pesho_station
             this.AutoScroll = true;
             FixBrowserEmulation();
 
+            string waypoint0Lat = GetParameters(docFile, "waypoint0")[1];//dumata e waypoint0/1 zashtoto tova hvashta reda v koito e samata duma
+            string waypoint0Long = GetParameters(docFile, "waypoint0")[2];
+            string waypoint1Lat = GetParameters(docFile, "waypoint1")[1];
+            string waypoint1Long = GetParameters(docFile, "waypoint1")[2];
+
             bool designTime = LicenseManager.UsageMode == LicenseUsageMode.Designtime;
             if (!designTime)
             {
                 mapBrowser.ScriptErrorsSuppressed = false;
 
-                string docFile = Path.Combine(Application.StartupPath, "C:\\Users\\PC\\source\\Pesho-Station-testMapInserting\\Pesho-station\\Pesho-station\\Pesho-station\\map.html"); //change this to your file's path
+                docFile = Path.Combine(Application.StartupPath, "..\\..\\map.html");
+                ChangeDestinationPins(docFile,waypoint0Lat, "43.13333");//zamestvate "43.13333" za novata tochka koqto iskate da slojite
                 string documentText = File.ReadAllText(docFile);
                 mapBrowser.DocumentText = documentText;
-                MessageBox.Show(GetParameters(docFile,"waypoint0"), GetParameters(docFile, "waypoint1"));
+                
             }
         }
 
@@ -55,13 +77,7 @@ namespace Pesho_station
         // https://blog.malwarebytes.com/101/2016/01/a-brief-guide-to-feature_browser_emulation/
         private static void FixBrowserEmulation()
         {
-            var appName = Process.GetCurrentProcess().ProcessName + ".exe";
-
-            // 11000 (0x2AF8) - Internet Explorer 11. Webpages containing standards-based !DOCTYPE directives are displayed 
-            // in IE11 edge mode. Default value for IE11.
-            int? mode = 0x2AF8;
-
-            //tva ne raboti, napravih go da polzva IE11 oshte v html faila i vsichko e tok i jica -Bobi
+            var appName = Process.GetCurrentProcess().ProcessName + ".exe";            
         }
     }
 }
