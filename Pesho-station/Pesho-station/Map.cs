@@ -12,7 +12,8 @@ namespace Pesho_station
 {
     public partial class Map : Form
     {
-        private string docFile;
+        private string docFile = Path.Combine(Application.StartupPath, "..\\..\\map.html");
+
         public string[] GetParameters(string docFile,string text)
         {
             string[] lines = File.ReadAllLines(docFile);
@@ -63,12 +64,12 @@ namespace Pesho_station
             if (!designTime)
             {
                 mapBrowser.ScriptErrorsSuppressed = false;
-
-                docFile = Path.Combine(Application.StartupPath, "..\\..\\map.html");
-                ChangeDestinationPins(docFile,waypoint0Lat, "43.13333");//zamestvate "43.13333" za novata tochka koqto iskate da slojite
+                
+                ChangeDestinationPins(docFile,waypoint0Lat, "42.13333");
                 string documentText = File.ReadAllText(docFile);
                 mapBrowser.DocumentText = documentText;
                 
+                //MessageBox.Show(GetParameters(docFile, "waypoint0")[1]);
             }
         }
 
