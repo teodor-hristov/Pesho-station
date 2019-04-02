@@ -43,7 +43,7 @@ namespace Pesho_station
             {
                 mapBrowser.ScriptErrorsSuppressed = false;
 
-                string docFile = Path.Combine(Application.StartupPath, "D:\\Git\\Pesho-station\\Pesho-station\\Pesho-station\\map.html");
+                string docFile = Path.Combine(Application.StartupPath, "C:\\Users\\PC\\source\\Pesho-Station-testMapInserting\\Pesho-station\\Pesho-station\\Pesho-station\\map.html"); //change this to your file's path
                 string documentText = File.ReadAllText(docFile);
                 mapBrowser.DocumentText = documentText;
                 MessageBox.Show(GetParameters(docFile,"waypoint0"), GetParameters(docFile, "waypoint1"));
@@ -61,7 +61,7 @@ namespace Pesho_station
             // in IE11 edge mode. Default value for IE11.
             int? mode = 0x2AF8;
 
-            
+            //tva ne raboti, napravih go da polzva IE11 oshte v html faila i vsichko e tok i jica -Bobi
         }
     }
 }
