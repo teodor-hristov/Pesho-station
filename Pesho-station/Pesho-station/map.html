@@ -40,7 +40,7 @@
         }
 
         .directions li span.leftFork {
-            background-position: -140px;
+            background-position: -143.184994px;
         }
 
         .directions li span.rightMerge {
@@ -48,7 +48,7 @@
         }
 
         .directions li span.leftMerge {
-            background-position: -140px;
+            background-position: -143.184994px;
         }
 
         .directions li span.slightRightTurn {
@@ -112,7 +112,7 @@
         }
 
         .directions li span.rightRoundaboutExit9 {
-            background-position: -840px;
+            background-position: -843.184994px;
         }
 
         .directions li span.rightRoundaboutExit10 {
@@ -215,18 +215,6 @@
 
     <script type="text/javascript" charset="UTF-8">
         /**
-         * /@exports
-         *Getting gps coordinates
-         * @param platform
-         */
-        
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.watchPosition(calculateRouteFromAtoB);
-            } 
-        }
-
-        /**
          * Calculates and displays a car route from the Brandenburg Gate in the centre of Berlin
          * to Friedrichstraße Railway Station.
          *
@@ -242,9 +230,8 @@
                     representation: 'display',
                     routeattributes: 'waypoints,summary,shape,legs',
                     maneuverattributes: 'direction,action',
-                    waypoint0: '' + platform.coords.latitude + ','+ platform.coords.longitude + '', // Lovech
-                    waypoint1: '43.4211722,24.5795139'  // Pleven
-                    //test
+                    waypoint0: '43.184994,24.649593', 
+                    waypoint1: '43.2994,24.649593'
                 };
 
 
@@ -503,5 +490,5 @@
         // Now use the map as required...
         calculateRouteFromAtoB(platform);
     </script>
-</body>
+</bodyonload="showPosition()"onload="showPosition()">
 </html><!DOCTYPE html>

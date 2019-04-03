@@ -39,6 +39,7 @@
             this.mapBrowser.Name = "mapBrowser";
             this.mapBrowser.Size = new System.Drawing.Size(1220, 720);
             this.mapBrowser.TabIndex = 0;
+            this.mapBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.mapBrowser_DocumentCompleted);
             // 
             // Map
             // 
