@@ -24,13 +24,13 @@ namespace Pesho_station
         }
 
 
-        private string driverName;
+        //private string driverName;
 
-        public string DriverName
-        {
-            get { return driverName; }
-            set { driverName = value; }
-        }
+        //public string DriverName
+        //{
+        //    get { return driverName; }
+        //    set { driverName = value; }
+        //}
 
 
         private string driverNameLogin;

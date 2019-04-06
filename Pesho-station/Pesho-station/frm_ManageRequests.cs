@@ -90,23 +90,9 @@ namespace Pesho_station
             }
         }
 
-
-        public string GetDriverName()
-        {
-            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
-            con.Open();
-            string cmdString2 = "select * from drivers where taxi_type=@driverName";
-            MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
-            cmd2.Parameters.AddWithValue("@driverName", carType);
-            var getDriverName = cmd2.ExecuteReader();
-            getDriverName.Read();
-            return getDriverName.GetString(1);
-
-        }
-
         private void DeleteSelectedRow()
         {
-            CallDriver();
+            AcceptRequest();
             if (HasRows())
             {
                 //deleting a row
@@ -124,9 +110,10 @@ namespace Pesho_station
 
             }
         }
-        private void CallDriver()
-        {
 
+        //accepts the requests by adding it to a driver table
+        private void AcceptRequest()
+        {
             MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
             string cmdString = "select * from taxi WHERE callerPhone=@callerPhone";
@@ -134,12 +121,11 @@ namespace Pesho_station
             cmd.Parameters.AddWithValue("@callerPhone", PhoneNumber);
             var getDelData = cmd.ExecuteReader();
             getDelData.Read();
-            string cmdString2 = "INSERT into call_driver(driver_name,phone_caller_taxi,name_caller,type_taxi) values('" + GetDriverName() + "','" + getDelData.GetString(7) + "','" + FullName + "','" + CarType + "');";
+            string cmdString2 = "INSERT into call_driver(driver_name,phone_caller_taxi,name_caller,type_taxi) values('" + DriverName + "','" + getDelData.GetString(7) + "','" + FullName + "','" + CarType + "');";
             if (getDelData.HasRows)
             {
                 MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
                 getDelData.Close();
-                MessageBox.Show("cappa");
                 var insertDriver = cmd2.ExecuteReader();
                 insertDriver.Read();
                 insertDriver.Close();
@@ -183,7 +169,6 @@ namespace Pesho_station
             string cmdString = "select * from drivers where driver_name=@driverName ";
             MySqlCommand cmd = new MySqlCommand(cmdString, con);
             cmd.Parameters.AddWithValue("@DriverName", DriverName);
-            MessageBox.Show(DriverName);
             var getCarType = cmd.ExecuteReader();
             getCarType.Read();
             if (getCarType.HasRows)
@@ -194,8 +179,6 @@ namespace Pesho_station
             {
                 return "Could not check for driver car type";
             }
-
-
         }
 
         // loads the taxi requests from the DB
@@ -206,7 +189,6 @@ namespace Pesho_station
             con.Open();
             MySqlCommand cmd = new MySqlCommand("select * from taxi where type=@type ", con);
             cmd.Parameters.AddWithValue("@type", CheckDriverCarType());
-            MessageBox.Show(CheckDriverCarType());
             MySqlDataAdapter MyAdapter = new MySqlDataAdapter();
             MyAdapter.SelectCommand = cmd;
             MyAdapter.Fill(dTable);
@@ -245,6 +227,10 @@ namespace Pesho_station
                 Note = row.Cells["driverNote"].Value.ToString();
             }
         }
-        
+
+        private void btn_delete_Click(object sender, EventArgs e)
+        {
+            //TODO:..
+        }
     }
 }
