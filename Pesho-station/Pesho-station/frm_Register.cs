@@ -57,9 +57,9 @@ namespace Pesho_station
             pnl_top.Capture = false;
         }
 
+        //hides the registration form and opens login form
         private void SignIn()
         {
-            //Works but needs to be improved
             frm_Login loginForm = new frm_Login();
             this.Hide();
             loginForm.ShowDialog();
@@ -71,6 +71,7 @@ namespace Pesho_station
             SignIn();
         }
 
+        //checks for existence of the username and appends the error label
         private void CheckForExistingUsername()
         {
             MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
@@ -92,6 +93,7 @@ namespace Pesho_station
             }   
         }
 
+        //appends the label with errors when there are empty fields
         private void CheckForEmptyFields()
         {
             if (txt_username.TextName == "" || txt_fullName.TextName == "" || txt_phoneNumber.TextName == "" || txt_password.TextName == "")
@@ -104,9 +106,10 @@ namespace Pesho_station
             }
         }
 
-        private void SuccessfullRegister()
+        //registering the user by adding it to the database
+        private void Register()
         {
-            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
             MySqlCommand cmd = new MySqlCommand("INSERT into register(fullname,username,phone,password) values('" + this.txt_fullName.TextName + "','" + this.txt_username.TextName + "','" + this.txt_phoneNumber.TextName + "','" + this.txt_password.TextName + "');", con);
             var reader = cmd.ExecuteReader();
@@ -116,10 +119,10 @@ namespace Pesho_station
             SignIn();
         }
 
+        //checks if there are any errors in the error labels
         private void btn_submit_Click(object sender, EventArgs e)
         {
-
-            if (lbl_wrongPhoneNumber.Text != "") //checks if there are any errors like wrong phone number or empty fields
+            if (lbl_wrongPhoneNumber.Text != "")
             {
                 txt_phoneNumber.TextName = "";
                 
@@ -134,16 +137,18 @@ namespace Pesho_station
             }
             else
             {
-                SuccessfullRegister();
+                Register();
             }
         }
 
+        //makes the txt to a password when leaving it so it does not show the password
         private void txt_password_Leave(object sender, EventArgs e)
         {
             txt_password.IsPassword = true;
             CheckForEmptyFields();
         }
 
+        //checks for incorrect phone number
         private void txt_phoneNumber_Leave(object sender, EventArgs e)
         {
             if(!txt_phoneNumber.TextName.All(c => c >= '0' && c <= '9'))
@@ -168,10 +173,6 @@ namespace Pesho_station
         {
             CheckForEmptyFields();
         }
-
-        private void frm_Register_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

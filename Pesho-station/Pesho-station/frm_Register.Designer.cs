@@ -352,7 +352,6 @@
             this.Name = "frm_Register";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegisterForm";
-            this.Load += new System.EventHandler(this.frm_Register_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pic_registration)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -14,6 +14,8 @@ namespace Pesho_station
 {
     public partial class frm_Login : Form
     {
+        MySqlDataReader clientReader;
+        MySqlDataReader driverReader;
         public frm_Login()
         {
             InitializeComponent();
@@ -60,16 +62,40 @@ namespace Pesho_station
             pnl_top.Capture = false;
         }
 
+        //hides the login form and opens registration form
         private void signupButton_Click(object sender, EventArgs e)
         {
-            //Works but needs to be improved
             frm_Register registerForm = new frm_Register();
             this.Hide();
             registerForm.ShowDialog();
             this.Close();
         }
 
-        private void btn_login_Click(object sender, EventArgs e)
+        //initializes client form and closes the reader
+        private void InitializeClientForm()
+        {
+            frm_Client clientForm = new frm_Client();
+            clientForm.Username = txt_usernameLogin.TextName;
+            clientForm.Phone = clientReader.GetString(3);
+            clientReader.Close();
+            this.Hide();
+            clientForm.ShowDialog();
+            this.Close();
+        }
+        
+        //initializes driver form and closes the reader
+        private void InitializeDriverForm()
+        {
+            frm_TaxiDriver taxiDriverForm = new frm_TaxiDriver();
+            taxiDriverForm.DriverNameLogin = txt_usernameLogin.TextName;
+            driverReader.Close();
+            this.Hide();
+            taxiDriverForm.ShowDialog();
+            this.Close();
+        }
+
+        //returns true if the client is authenticated successfully
+        private bool UserAuthenticationSuccessful()
         {
             MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
@@ -77,47 +103,57 @@ namespace Pesho_station
             MySqlCommand cmd = new MySqlCommand(cmdString, con);
             cmd.Parameters.AddWithValue("@password", txt_passwordLogin.TextName);
             cmd.Parameters.AddWithValue("@username", txt_usernameLogin.TextName);
+            clientReader = cmd.ExecuteReader();
+            clientReader.Read();
+            if (clientReader.HasRows)
+            {
+                return true;
+            }
+            else
+            {
+                clientReader.Close();
+                return false;
+            }
+        }
 
-
-
-            var reader = cmd.ExecuteReader();
-            reader.Read();
-
+        //returns true if the driver is authenticated successfully
+        private bool DriverAuthenticationSuccessful()
+        {
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
+            con.Open();
             string cmdString2 = "select * from drivers where driver_password=@driver_password and driver_name=@driver_name";
             MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
             cmd2.Parameters.AddWithValue("@driver_password", txt_passwordLogin.TextName);
             cmd2.Parameters.AddWithValue("@driver_name", txt_usernameLogin.TextName);
 
-
-            if (reader.HasRows)
+            driverReader = cmd2.ExecuteReader();
+            driverReader.Read();
+            if (driverReader.HasRows)
             {
-                frm_Client clientForm = new frm_Client();
-                clientForm.Username = txt_usernameLogin.TextName;
-                clientForm.Phone = reader.GetString(3);
-                this.Hide();
-                clientForm.ShowDialog();
-                this.Close();
-                reader.Close();
-            }
-            reader.Close();
-            var drivers = cmd2.ExecuteReader();
-            drivers.Read();
-            if (drivers.HasRows)
-            {
-                frm_TaxiDriver taxiDriverForm = new frm_TaxiDriver();
-                taxiDriverForm.DriverNameLogin = txt_usernameLogin.TextName;
-                this.Hide();
-                taxiDriverForm.ShowDialog();
-                this.Close();
+                return true;
             }
             else
             {
-                MessageBox.Show("Invalid credentials");
+                driverReader.Close();
+                return false;
             }
         }
-        private void frm_Login_Load(object sender, EventArgs e)
-        {
 
+        //checks if user or driver is authenicated successfully and initializes the form
+        private void btn_login_Click(object sender, EventArgs e)
+        {
+            if (UserAuthenticationSuccessful() == true)
+            {
+                InitializeClientForm();
+            }
+            else if (DriverAuthenticationSuccessful() == true)
+            {
+                InitializeDriverForm();
+            }
+            else
+            {
+                MessageBox.Show("Invalid credentials!");
+            }
         }
 
         private void txt_usernameLogin_Enter(object sender, EventArgs e)

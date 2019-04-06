@@ -17,10 +17,10 @@ namespace Pesho_station
         public frm_TaxiDriver()
         {
             InitializeComponent();
+            manageRequestsForm.DriverName = DriverNameLogin;
             pnl_main.Controls.Add(map);
             map.Width = 1054;
             map.Show();
-            //manageRequestsForm.DriverName = DriverName;
         }
 
 
@@ -83,7 +83,7 @@ namespace Pesho_station
 
         private void btn_menu_Click(object sender, EventArgs e)
         {
-            if(pnl_left.Width == 245)
+            if(pnl_left.Width == 245) //shrinks the panel
             {
                 pnl_left.Width = 75;
                 map.Width = 1220;
@@ -92,7 +92,7 @@ namespace Pesho_station
                 pnl_rightBorder.Location = new Point(81, 9);
                 pnl_leftYellow.BackColor = Color.FromArgb(234, 157, 30);
             }
-            else
+            else //unshrinks the panel
             {
                 map.Width = 1054;
                 pnl_main.Width = 1054;
@@ -165,21 +165,6 @@ namespace Pesho_station
         public static void OpenLoginForm()
         {
             Application.Run(new frm_Login());
-        }
-
-        private void pnl_left_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pnl_main_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void frm_TaxiDriver_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void frm_TaxiDriver_Load_1(object sender, EventArgs e)

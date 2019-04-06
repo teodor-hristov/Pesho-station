@@ -133,26 +133,33 @@ namespace Pesho_station
 
         private void RequestTaxi()
         {
-            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
-            con.Open();
-            string cmdString2 = "select * from register where username=@username";
-            MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
-            cmd2.Parameters.AddWithValue("@username", username);
-            var readUsernames = cmd2.ExecuteReader();
-            readUsernames.Read();
-            string cmdString = "insert into taxi(passengers,type,pickupTime,pickUpAdress,dropUpAdress,driverNote,callerPhone,callerFullname) values('" + this.trackBar1.Value + "', '" + this.cmb_vehicleType.Text + "', '" + this.cmb_pickupTime.Text + "', '" + this.txt_pickupAddress.TextName + "', '" + this.txt_dropoffAddress.TextName + "', '" +this.richTextBox1.Text + "', '" + readUsernames.GetString(3)+ "', '" +readUsernames.GetString(1) + "'); ";
-            readUsernames.Close();
-            MySqlCommand cmd = new MySqlCommand(cmdString, con);
-            var inserter = cmd.ExecuteReader();
-            inserter.Read();
-            
-            MessageBox.Show("You requsted a taxi");
-            lbl_status.Visible = true;
+            if(txt_pickupAddress.TextName!="" && txt_dropoffAddress.TextName != "")
+            {
+                MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
+                con.Open();
+                string cmdString2 = "select * from register where username=@username";
+                MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
+                cmd2.Parameters.AddWithValue("@username", username);
+                var readUsernames = cmd2.ExecuteReader();
+                readUsernames.Read();
+                string cmdString = "insert into taxi(passengers,type,pickupTime,pickUpAdress,dropUpAdress,driverNote,callerPhone,callerFullname) values('" + this.trackBar1.Value + "', '" + this.cmb_vehicleType.Text + "', '" + this.cmb_pickupTime.Text + "', '" + this.txt_pickupAddress.TextName + "', '" + this.txt_dropoffAddress.TextName + "', '" + this.richTextBox1.Text + "', '" + readUsernames.GetString(3) + "', '" + readUsernames.GetString(1) + "'); ";
+                readUsernames.Close();
+                MySqlCommand cmd = new MySqlCommand(cmdString, con);
+                var inserter = cmd.ExecuteReader();
+                inserter.Read();
+
+                MessageBox.Show("You requsted a taxi");
+                lbl_status.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show("Please make sure you have entered pickup and dropoff address!");
+            }
         }
 
         //public string GetFullNameOfCaller()
         //{
-        //    MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+        //    MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
         //    con.Open();
         //    string cmdString2 = "select * from taxi where callerFullName=@FullName";
         //    MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);

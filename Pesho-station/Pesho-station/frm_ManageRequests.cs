@@ -64,6 +64,7 @@ namespace Pesho_station
             HideDataGridView();
         }
 
+        //Hides the data grid when there are no requests
         private void HideDataGridView()
         {
             if (!HasRows())
@@ -76,6 +77,7 @@ namespace Pesho_station
             }
         }
 
+        //checks for requests in the datagrid
         private bool HasRows()
         {
             if (dataGridView1.Rows.Count > 0)
@@ -91,7 +93,7 @@ namespace Pesho_station
 
         public string GetDriverName()
         {
-            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
             string cmdString2 = "select * from drivers where taxi_type=@driverName";
             MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
@@ -107,9 +109,8 @@ namespace Pesho_station
             CallDriver();
             if (HasRows())
             {
-
                 //deleting a row
-                MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+                MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
                 con.Open();
                 string cmdString = "delete from taxi WHERE id=@Id";
                 MySqlCommand cmd = new MySqlCommand(cmdString, con);
@@ -126,7 +127,7 @@ namespace Pesho_station
         private void CallDriver()
         {
 
-            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
             string cmdString = "select * from taxi WHERE callerPhone=@callerPhone";
             MySqlCommand cmd = new MySqlCommand(cmdString, con);
@@ -144,7 +145,8 @@ namespace Pesho_station
                 insertDriver.Close();
             }
         }
-        private int FindMaxId(MySqlConnection con)  //selecting max id in the DB
+        //selecting max id in the DB
+        private int FindMaxId(MySqlConnection con)  
         {
             string cmdString2 = "select max(id) from taxi";
             MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
@@ -162,7 +164,8 @@ namespace Pesho_station
             return maxId;
         }
 
-        private void AlterAutoIncrement(MySqlConnection con,int maxid) //altering auto increment value with the maxId found
+        //altering auto increment value with the maxId found
+        private void AlterAutoIncrement(MySqlConnection con,int maxid) 
         {
             string cmdString3 = "alter table taxi auto_increment=@maxId";
             MySqlCommand cmd3 = new MySqlCommand(cmdString3, con);
@@ -172,6 +175,7 @@ namespace Pesho_station
             refreshAutoIncrement.Close();
         }
 
+        // returns the driver's car type
         private string CheckDriverCarType()
         {
             MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
@@ -188,12 +192,13 @@ namespace Pesho_station
             }
             else
             {
-                return "s";
+                return "Could not check for driver car type";
             }
 
 
         }
 
+        // loads the taxi requests from the DB
         private void LoadDataSet()
         {
             dTable.Rows.Clear();
@@ -215,15 +220,15 @@ namespace Pesho_station
         private void btn_refresh_Click(object sender, EventArgs e)
         {
             LoadDataSet();
-
         }
 
         private void btn_accept_Click(object sender, EventArgs e)
         {
-
             DeleteSelectedRow();
+            LoadDataSet();
         }
-
+        
+        // sets values to the properties when clicking on a cell in datagridview
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -240,9 +245,6 @@ namespace Pesho_station
                 Note = row.Cells["driverNote"].Value.ToString();
             }
         }
-
-        private void btn_delete_Click(object sender, EventArgs e)
-        {
-        }
+        
     }
 }
