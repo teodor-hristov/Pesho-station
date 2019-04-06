@@ -13,6 +13,7 @@ namespace Pesho_station
 {
     public partial class Map : Form
     {
+        ChangeParametersInMap change = new ChangeParametersInMap();
         private string waypoint0Lat, waypoint0Long, waypoint1Lat, waypoint1Long;
         private string docFile = Path.Combine(Application.StartupPath, "..\\..\\map.html");
         public string[] GetParameters(string docFile, string text)
@@ -37,31 +38,20 @@ namespace Pesho_station
 
             return split;
         }
-        static public void ChangeDestinationPins(string filePath, string searchText, string replaceText)
-        {
-            StreamReader reader = new StreamReader(filePath);
-            string content = reader.ReadToEnd();
-            reader.Close();
-
-            content = Regex.Replace(content, searchText, replaceText);
-
-            StreamWriter writer = new StreamWriter(filePath);
-            writer.Write(content);
-            writer.Close();
-        }
 
         public Map()
         {
             InitializeComponent();
             this.TopLevel = false;
             this.AutoScroll = true;
-            FixBrowserEmulation();
-
+          //  string dropOffPosition = "Pernik";
+           // change.ChangeDestinationPins(docFile, "ADDRESS_KEYWORD", dropOffPosition);
+            
 
             waypoint0Lat = GetParameters(docFile, "waypoint0")[1];
             waypoint0Long = GetParameters(docFile, "waypoint0")[2];
-            waypoint1Lat = GetParameters(docFile, "waypoint1")[1];
-            waypoint1Long = GetParameters(docFile, "waypoint1")[2];
+           // waypoint1Lat = GetParameters(docFile, "waypoint1")[1];
+            //waypoint1Long = GetParameters(docFile, "waypoint1")[2];
 
             bool designTime = LicenseManager.UsageMode == LicenseUsageMode.Designtime;
             if (!designTime)
@@ -70,6 +60,8 @@ namespace Pesho_station
                 string documentText = File.ReadAllText(docFile);
                 mapBrowser.DocumentText = documentText;
             }
+            FixBrowserEmulation();
+            //change.ChangeDestinationPins(docFile, dropOffPosition, "ADDRESS_KEYWORD");
         }
 
         private static void FixBrowserEmulation()
@@ -90,8 +82,8 @@ namespace Pesho_station
                 Double.Parse(waypoint0Long) != e.Position.Location.Longitude)
             {
                 //coordinates of person's location
-                ChangeDestinationPins(docFile, waypoint0Lat, e.Position.Location.Latitude.ToString());
-                ChangeDestinationPins(docFile, waypoint0Long, e.Position.Location.Longitude.ToString());
+                change.ChangeDestinationPins(docFile, waypoint0Lat, e.Position.Location.Latitude.ToString());
+                change.ChangeDestinationPins(docFile, waypoint0Long, e.Position.Location.Longitude.ToString());
                 
             }    
 
