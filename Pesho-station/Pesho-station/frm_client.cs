@@ -20,7 +20,7 @@ namespace Pesho_station
             InitializeComponent();
             pnl_main.Controls.Add(map);
             map.Width = 1054;
-            map.Show();
+            //map.Show();
         }
 
         private string username;

@@ -44,23 +44,31 @@ namespace Pesho_station
             InitializeComponent();
             this.TopLevel = false;
             this.AutoScroll = true;
-          //  string dropOffPosition = "Pernik";
-           // change.ChangeDestinationPins(docFile, "ADDRESS_KEYWORD", dropOffPosition);
             
+            
+            //MessageBox.Show(GetParameters(docFile, "ADDRESS_KEYWORD")[0]);
+            FixBrowserEmulation();
+
+
+            //string dropOffPosition = "Pernik";
+            //change.ChangeDestinationPins(docFile, "ADDRESS_KEYWORD", dropOffPosition);
+
 
             waypoint0Lat = GetParameters(docFile, "waypoint0")[1];
             waypoint0Long = GetParameters(docFile, "waypoint0")[2];
-           // waypoint1Lat = GetParameters(docFile, "waypoint1")[1];
+            // waypoint1Lat = GetParameters(docFile, "waypoint1")[1];
             //waypoint1Long = GetParameters(docFile, "waypoint1")[2];
-
-            bool designTime = LicenseManager.UsageMode == LicenseUsageMode.Designtime;
-            if (!designTime)
+            if (GetParameters(docFile, "ADDRESS_KEYWORD")[0] == "")
             {
-                mapBrowser.ScriptErrorsSuppressed = false;
-                string documentText = File.ReadAllText(docFile);
-                mapBrowser.DocumentText = documentText;
+                bool designTime = LicenseManager.UsageMode == LicenseUsageMode.Designtime;
+                if (!designTime)
+                {
+                    mapBrowser.ScriptErrorsSuppressed = false;
+                    string documentText = File.ReadAllText(docFile);
+                    mapBrowser.DocumentText = documentText;
+                }
             }
-            FixBrowserEmulation();
+            
             //change.ChangeDestinationPins(docFile, dropOffPosition, "ADDRESS_KEYWORD");
         }
 

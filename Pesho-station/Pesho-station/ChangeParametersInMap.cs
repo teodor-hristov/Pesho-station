@@ -10,6 +10,7 @@ namespace Pesho_station
 {
     class ChangeParametersInMap
     {
+        public string MAP_DROPOFFDEST_CONSTANT = "ADDRESS_KEYWORD";
         public ChangeParametersInMap()
         {
 
