@@ -73,7 +73,7 @@ namespace Pesho_station
 
         private void CheckForExistingUsername()
         {
-            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
             string cmdString = "select * from register where username= @username";
 

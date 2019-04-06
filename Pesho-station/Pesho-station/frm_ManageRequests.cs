@@ -174,7 +174,7 @@ namespace Pesho_station
 
         private string CheckDriverCarType()
         {
-            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
             string cmdString = "select * from drivers where driver_name=@driverName ";
             MySqlCommand cmd = new MySqlCommand(cmdString, con);
@@ -197,7 +197,7 @@ namespace Pesho_station
         private void LoadDataSet()
         {
             dTable.Rows.Clear();
-            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
             MySqlCommand cmd = new MySqlCommand("select * from taxi where type=@type ", con);
             cmd.Parameters.AddWithValue("@type", CheckDriverCarType());

@@ -133,7 +133,7 @@ namespace Pesho_station
 
         private void RequestTaxi()
         {
-            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
             string cmdString2 = "select * from register where username=@username";
             MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
@@ -166,7 +166,7 @@ namespace Pesho_station
 
         private void CheckForRequest()
         {
-            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
             string cmdString3 = "select phone_caller_taxi from call_driver where phone_caller_taxi=@phone";
             MySqlCommand cmd = new MySqlCommand(cmdString3, con);
@@ -182,7 +182,7 @@ namespace Pesho_station
 
         private void statusRefresh()
         {
-            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
             string cmdString2 = "select callerPhone from taxi where callerPhone=@phone ";
             MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
