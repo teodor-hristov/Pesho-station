@@ -91,7 +91,7 @@ namespace Pesho_station
 
         public string GetDriverName()
         {
-            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
             string cmdString2 = "select * from drivers where taxi_type=@driverName";
             MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
@@ -109,7 +109,7 @@ namespace Pesho_station
             {
 
                 //deleting a row
-                MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+                MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
                 con.Open();
                 string cmdString = "delete from taxi WHERE id=@Id";
                 MySqlCommand cmd = new MySqlCommand(cmdString, con);
@@ -126,7 +126,7 @@ namespace Pesho_station
         private void CallDriver()
         {
 
-            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
             con.Open();
             string cmdString = "select * from taxi WHERE callerPhone=@callerPhone";
             MySqlCommand cmd = new MySqlCommand(cmdString, con);
