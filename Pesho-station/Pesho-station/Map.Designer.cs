@@ -28,7 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.mapBrowser = new System.Windows.Forms.WebBrowser();
             this.SuspendLayout();
+            // 
+            // mapBrowser
+            // 
+            this.mapBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mapBrowser.Location = new System.Drawing.Point(0, 0);
+            this.mapBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.mapBrowser.Name = "mapBrowser";
+            this.mapBrowser.Size = new System.Drawing.Size(1220, 720);
+            this.mapBrowser.TabIndex = 0;
+            this.mapBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.mapBrowser_DocumentCompleted);
             // 
             // Map
             // 
@@ -36,6 +47,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(34)))), ((int)(((byte)(36)))));
             this.ClientSize = new System.Drawing.Size(1220, 720);
+            this.Controls.Add(this.mapBrowser);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Map";
             this.Text = "Map";
@@ -44,5 +56,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.WebBrowser mapBrowser;
     }
 }

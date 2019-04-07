@@ -21,7 +21,7 @@ namespace Pesho_station
             InitializeComponent();
             pnl_main.Controls.Add(map);
             map.Width = 1054;
-            map.Show();
+            //map.Show();
         }
 
         private string phone;
@@ -164,19 +164,28 @@ namespace Pesho_station
         {
             lbl_settings.ForeColor = Color.FromArgb(180, 180, 180);
         }
-        
+
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(OpenLoginForm)); //creating a new thread with a login form
             this.Dispose();
             callTaxiForm.Dispose();
+            map.Dispose();
             this.Close();
-            t.Start();
+            Application.Restart();
         }
 
-        public static void OpenLoginForm()
-        {
-            Application.Run(new frm_Login());
-        }
+        //private void btnLogout_Click(object sender, EventArgs e)
+        //{
+        //    System.Threading.Thread t = new System.Threading.Thread(new System.Threading.ThreadStart(OpenLoginForm)); //creating a new thread with a login form
+        //    this.Dispose();
+        //    callTaxiForm.Dispose();
+        //    this.Close();
+        //    t.Start();
+        //}
+
+        //public static void OpenLoginForm()
+        //{
+        //    Application.Run(new frm_Login());
+        //}
     }
 }
