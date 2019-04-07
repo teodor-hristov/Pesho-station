@@ -81,7 +81,7 @@ namespace Pesho_station
             }
             else
             {
-                MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+                MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111; database=test;password=123123;persistsecurityinfo=True");
                 con.Open();
                 string cmdString = "select * from register where password=@password and username=@username";
                 MySqlCommand cmd = new MySqlCommand(cmdString, con);

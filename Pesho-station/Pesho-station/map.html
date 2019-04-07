@@ -40,7 +40,7 @@
         }
 
         .directions li span.leftFork {
-            background-position: -143.184994px;
+            background-position: -143.1456697284568px;
         }
 
         .directions li span.rightMerge {
@@ -48,7 +48,7 @@
         }
 
         .directions li span.leftMerge {
-            background-position: -143.184994px;
+            background-position: -143.1456697284568px;
         }
 
         .directions li span.slightRightTurn {
@@ -112,7 +112,7 @@
         }
 
         .directions li span.rightRoundaboutExit9 {
-            background-position: -843.184994px;
+            background-position: -843.1456697284568px;
         }
 
         .directions li span.rightRoundaboutExit10 {
@@ -223,15 +223,21 @@
          *
          * @param   {H.service.Platform} platform    A stub class to access HERE services
          */
+        
         function calculateRouteFromAtoB(platform) {
+
+            var json_obj = JSON.parse(Get("https://geocoder.api.here.com/6.2/geocode.json?app_id=etfhXnXBeMDAZzTbl5eM&app_code=0N5QIr6KJHOMLOok4EvDuw&searchtext=ADDRESS_KEYWORD+Bulgaria"));
+            var latitudeOfWantedPoint = json_obj.Response.View[0].Result[0].Location.DisplayPosition.Latitude;
+            var longitudeOfWantedPoint = json_obj.Response.View[0].Result[0].Location.DisplayPosition.Longitude;
+            
             var router = platform.getRoutingService(),
                 routeRequestParams = {
                     mode: 'fastest;car',
                     representation: 'display',
                     routeattributes: 'waypoints,summary,shape,legs',
                     maneuverattributes: 'direction,action',
-                    waypoint0: '43.184994,24.649593', 
-                    waypoint1: '43.2994,24.649593'
+                    waypoint0: '43.1456697284568,24.7145511427335',
+                    waypoint1: '' + latitudeOfWantedPoint.valueOf() + ',' + longitudeOfWantedPoint.valueOf() + ''
                 };
 
 
@@ -241,6 +247,14 @@
                 onError
             );
         }
+
+        function Get(yourUrl) {
+            var Httpreq = new XMLHttpRequest(); // a new request
+            Httpreq.open("GET", yourUrl, false);
+            Httpreq.send(null);
+            return Httpreq.responseText;
+        }
+          
         /**
          * This function will be called once the Routing REST API provides a response
          * @param  {Object} result          A JSONP object representing the calculated route
@@ -256,11 +270,33 @@
              */
             addRouteShapeToMap(route);
             addManueversToMap(route);
-
-            addWaypointsToPanel(route.waypoint);
-            //addManueversToPanel(route); // Add detailed manuevers
             addSummaryToPanel(route.summary);
-            // ... etc.
+        }
+        function addLocationsToMap(locations) {
+            var group = new H.map.Group(),
+                position,
+                i;
+
+            // Add a marker for each location found
+            for (i = 0; i < locations.length; i += 1) {
+                position = {
+                    lat: locations[i].location.displayPosition.latitude,
+                    lng: locations[i].location.displayPosition.longitude
+                };
+                marker = new H.map.Marker(position);
+                marker.label = locations[i].location.address.label;
+                group.addObject(marker);
+            }
+
+            group.addEventListener('tap', function (evt) {
+                map.setCenter(evt.target.getPosition());
+                openBubble(
+                    evt.target.getPosition(), evt.target.label);
+            }, false);
+
+            // Add the locations group to the map
+            map.addObject(group);
+            map.setCenter(group.getBounds().getCenter());
         }
 
         /**
@@ -270,9 +306,6 @@
         function onError(error) {
             alert('Ooops!');
         }
-
-
-
 
         /**
          * Boilerplate map initialization code starts below:
@@ -297,7 +330,7 @@
         //Step 2: initialize a map - this map is centered over Berlin
         var map = new H.Map(mapContainer,
             defaultLayers.normal.map, {
-                center: { lat: 52.5160, lng: 13.3779 },
+                center: { lat: 42.698334, lng: 23.319941 },
                 zoom: 13,
                 pixelRatio: pixelRatio
             });
@@ -401,87 +434,14 @@
             map.addObject(group);
         }
 
-
-        /**
-         * Creates a series of H.map.Marker points from the route and adds them to the map.
-         * @param {Object} route  A route as received from the H.service.RoutingService
-         */
-        function addWaypointsToPanel(waypoints) {
-
-
-
-            var nodeH3 = document.createElement('h3'),
-                waypointLabels = [],
-                i;
-
-
-            for (i = 0; i < waypoints.length; i += 1) {
-                waypointLabels.push(waypoints[i].label)
-            }
-
-            nodeH3.textContent = waypointLabels.join(' - ');
-
-            routeInstructionsContainer.innerHTML = '';
-            routeInstructionsContainer.appendChild(nodeH3);
-        }
-
         /**
          * Creates a series of H.map.Marker points from the route and adds them to the map.
          * @param {Object} route  A route as received from the H.service.RoutingService
          */
         function addSummaryToPanel(summary) {
-            var summaryDiv = document.createElement('div'),
-                content = '';
-            content += '<b>Total distance</b>: ' + summary.distance + 'm. <br/>';
-            content += '<b>Travel Time</b>: ' + summary.travelTime.toMMSS() + ' (in current traffic)';
-
-
-            summaryDiv.style.fontSize = 'small';
-            summaryDiv.style.marginLeft = '5%';
-            summaryDiv.style.marginRight = '5%';
-            summaryDiv.innerHTML = content;
-            routeInstructionsContainer.appendChild(summaryDiv);
+            summary.distance;
+            summary.travelTime.toMMSS();
         }
-
-        /**
-         * Creates a series of H.map.Marker points from the route and adds them to the map.
-         * @param {Object} route  A route as received from the H.service.RoutingService
-         */
-        function addManueversToPanel(route) {
-
-
-
-            var nodeOL = document.createElement('ol'),
-                i,
-                j;
-
-            nodeOL.style.fontSize = 'small';
-            nodeOL.style.marginLeft = '5%';
-            nodeOL.style.marginRight = '5%';
-            nodeOL.className = 'directions';
-
-            // Add a marker for each maneuver
-            for (i = 0; i < route.leg.length; i += 1) {
-                for (j = 0; j < route.leg[i].maneuver.length; j += 1) {
-                    // Get the next maneuver.
-                    maneuver = route.leg[i].maneuver[j];
-
-                    var li = document.createElement('li'),
-                        spanArrow = document.createElement('span'),
-                        spanInstruction = document.createElement('span');
-
-                    spanArrow.className = 'arrow ' + maneuver.action;
-                    spanInstruction.innerHTML = maneuver.instruction;
-                    li.appendChild(spanArrow);
-                    li.appendChild(spanInstruction);
-
-                    nodeOL.appendChild(li);
-                }
-            }
-
-            routeInstructionsContainer.appendChild(nodeOL);
-        }
-
 
         Number.prototype.toMMSS = function () {
             return Math.floor(this / 60) + ' minutes ' + (this % 60) + ' seconds.';
@@ -490,5 +450,5 @@
         // Now use the map as required...
         calculateRouteFromAtoB(platform);
     </script>
-</bodyonload="showPosition()"onload="showPosition()">
-</html><!DOCTYPE html>
+</html>
+

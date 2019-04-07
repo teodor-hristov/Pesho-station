@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Pesho_station
 {
@@ -20,6 +21,9 @@ namespace Pesho_station
         int noteWidth = 229;
         int noteTotalChars = 0;
         int noteMaxCharsOnLine = 37; //the char number to add a new line to the cmb
+        private string docFile = Path.Combine(Application.StartupPath, "..\\..\\map.html");
+        ChangeParametersInMap change = new ChangeParametersInMap();
+
         //cmb max chars = 296
         private string username;
 
@@ -116,7 +120,7 @@ namespace Pesho_station
 
         private void RequestTaxi()
         {
-            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.159.21;database=test;password=123123;persistsecurityinfo=True");
+            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111; database=test;password=123123;persistsecurityinfo=True");
             con.Open();
             string cmdString2 = "select * from register where username=@username";
             MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
@@ -128,9 +132,12 @@ namespace Pesho_station
             MySqlCommand cmd = new MySqlCommand(cmdString, con);
             var inserter = cmd.ExecuteReader();
             inserter.Read();
-            
+            change.ChangeDestinationPins(docFile,change.MAP_DROPOFFDEST_CONSTANT, this.txt_dropoffAddress.TextName);
             MessageBox.Show("You requsted a taxi");
             lbl_status.Visible = true;
+            Map map = new Map();
+            map.Show();
+            change.ChangeDestinationPins(docFile, this.txt_dropoffAddress.TextName, change.MAP_DROPOFFDEST_CONSTANT);
 
         }
 
