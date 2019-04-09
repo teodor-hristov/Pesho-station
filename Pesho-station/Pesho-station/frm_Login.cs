@@ -111,35 +111,8 @@ namespace Pesho_station
             }
             else
             {
-<<<<<<< HEAD
                 clientReader.Close();
                 return false;
-=======
-                MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111; database=test;password=123123;persistsecurityinfo=True");
-                con.Open();
-                string cmdString = "select * from register where password=@password and username=@username";
-                MySqlCommand cmd = new MySqlCommand(cmdString, con);
-                cmd.Parameters.AddWithValue("@password", txt_passwordLogin.TextName);
-                cmd.Parameters.AddWithValue("@username", txt_usernameLogin.TextName);
-
-                var reader = cmd.ExecuteReader();
-                reader.Read();
-
-                if (reader.HasRows)
-                {
-                    frm_Client clientForm = new frm_Client();
-                    clientForm.Username = txt_usernameLogin.TextName;
-                    this.Hide();
-                    clientForm.ShowDialog();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Invalid credentials");
-                }
-
-                con.Close();
->>>>>>> e99dd0b2de07262af88231667123d715dc85d3c2
             }
         }
 

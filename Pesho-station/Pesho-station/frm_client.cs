@@ -21,7 +21,7 @@ namespace Pesho_station
             InitializeComponent();
             pnl_main.Controls.Add(map);
             map.Width = 1054;
-            //map.Show();
+            map.Show();
         }
 
         private string phone;
@@ -115,27 +115,75 @@ namespace Pesho_station
                 pnl_leftYellow.BackColor = Color.FromArgb(26, 26, 26);
             }
         }
+        /// <summary>
+        /// The adding and removing control logic is that it
+        /// shows the control if already exists in the pnl_main.Controls
+        /// or adds it if it does not.
+        /// Removes the control if exists.
+        /// Every time it enters another button it removes all other controls
+        /// and adds the one that it needs.
+        /// </summary>
+        private void ShowMap()
+        {
+            if (!pnl_main.Controls.Contains(map))
+            {
+                pnl_main.Controls.Add(map);
+                map.Show();
+            }
+            else
+            {
+                map.Show();
+            }
+        }
+
+        private void ShowCallTaxi()
+        {
+            if (!pnl_main.Controls.Contains(callTaxiForm))
+            {
+                pnl_main.Controls.Add(callTaxiForm);
+                callTaxiForm.Show();
+            }
+            else
+            {
+                callTaxiForm.Show();
+            }
+        }
+
+        private void HideAndRemoveMap()
+        {
+            if (pnl_main.Controls.Contains(map))
+            {
+                pnl_main.Controls.Remove(map);
+            }
+        }
+
+        private void HideAndRemoveCallTaxi()
+        {
+            if (pnl_main.Controls.Contains(callTaxiForm))
+            {
+                pnl_main.Controls.Remove(callTaxiForm);
+            }
+        }
 
         private void btn_home_Enter(object sender, EventArgs e)
         {
             lbl_home.ForeColor = Color.FromArgb(234, 157, 30);
             pnl_leftYellow.Location = new Point(1, 179);
-            map.Visible = true;
+            HideAndRemoveCallTaxi();
+            ShowMap();
         }
 
         private void btn_home_Leave(object sender, EventArgs e)
         {
             lbl_home.ForeColor = Color.FromArgb(180, 180, 180);
-            map.Visible = false; //so it doesn't need to reload the map every time
         }
 
         private void btn_phone_Enter(object sender, EventArgs e)
         {
             lbl_phone.ForeColor = Color.FromArgb(234, 157, 30);
             pnl_leftYellow.Location = new Point(1, 265);
-            map.Hide();
-            pnl_main.Controls.Add(callTaxiForm);
-            callTaxiForm.Show();
+            HideAndRemoveMap();
+            ShowCallTaxi();
         }
 
         private void btn_phone_Leave(object sender, EventArgs e)

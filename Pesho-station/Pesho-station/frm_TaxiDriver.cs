@@ -103,27 +103,75 @@ namespace Pesho_station
             }
         }
 
+        /// <summary>
+        /// The adding and removing control logic is that it
+        /// shows the control if already exists in the pnl_main.Controls
+        /// or adds it if it does not.
+        /// Removes the control if exists.
+        /// Every time it enters another button it removes all other controls
+        /// and adds the one that it needs.
+        /// </summary>
+        private void ShowMap()
+        {
+            if (!pnl_main.Controls.Contains(map))
+            {
+                pnl_main.Controls.Add(map);
+                map.Show();
+            }
+            else
+            {
+                map.Show();
+            }
+        }
+
+        private void ShowManageRequests()
+        {
+            if (!pnl_main.Controls.Contains(manageRequestsForm))
+            {
+                pnl_main.Controls.Add(manageRequestsForm);
+                manageRequestsForm.Show();
+            }
+            else
+            {
+                manageRequestsForm.Show();
+            }
+        }
+
+        private void HideAndRemoveMap()
+        {
+            if (pnl_main.Controls.Contains(map))
+            {
+                pnl_main.Controls.Remove(map);
+            }
+        }
+
+        private void HideAndRemoveManageRequests()
+        {
+            if (pnl_main.Controls.Contains(manageRequestsForm))
+            {
+                pnl_main.Controls.Remove(manageRequestsForm);
+            }
+        }
+
         private void btn_home_Enter(object sender, EventArgs e)
         {
             lbl_home.ForeColor = Color.FromArgb(234, 157, 30);
             pnl_leftYellow.Location = new Point(1, 179);
-            map.Visible = true;
+            HideAndRemoveManageRequests();
+            ShowMap();
         }
 
         private void btn_home_Leave(object sender, EventArgs e)
         {
             lbl_home.ForeColor = Color.FromArgb(180, 180, 180);
-            map.Visible = false;
         }
 
         private void btn_phone_Enter(object sender, EventArgs e)
         {
             lbl_phone.ForeColor = Color.FromArgb(234, 157, 30);
             pnl_leftYellow.Location = new Point(1, 265);
-            map.Visible = false;
-            map.Hide();
-            pnl_main.Controls.Add(manageRequestsForm);
-            manageRequestsForm.Show();
+            HideAndRemoveMap();
+            ShowManageRequests();
         }
 
         private void btn_phone_Leave(object sender, EventArgs e)

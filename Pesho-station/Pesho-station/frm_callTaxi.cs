@@ -137,7 +137,6 @@ namespace Pesho_station
 
         private void RequestTaxi()
         {
-<<<<<<< HEAD
             if(txt_pickupAddress.TextName!="" && txt_dropoffAddress.TextName != "")
             {
                 MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
@@ -179,9 +178,6 @@ namespace Pesho_station
         private void CheckForRequest()
         {
             MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111;database=test;password=123123;persistsecurityinfo=True");
-=======
-            MySqlConnection con = new MySqlConnection("user id=peshoStation;server=212.233.147.111; database=test;password=123123;persistsecurityinfo=True");
->>>>>>> e99dd0b2de07262af88231667123d715dc85d3c2
             con.Open();
             string cmdString3 = "select phone_caller_taxi from call_driver where phone_caller_taxi=@phone";
             MySqlCommand cmd = new MySqlCommand(cmdString3, con);
@@ -201,7 +197,7 @@ namespace Pesho_station
             con.Open();
             string cmdString2 = "select callerPhone from taxi where callerPhone=@phone ";
             MySqlCommand cmd2 = new MySqlCommand(cmdString2, con);
-<<<<<<< HEAD
+//<<<<<<< HEAD
             cmd2.Parameters.AddWithValue("@phone", Phone);
             MessageBox.Show(phone);
             var reader = cmd2.ExecuteReader();
@@ -216,22 +212,22 @@ namespace Pesho_station
             {
                 CheckForRequest();
             }
-=======
-            cmd2.Parameters.AddWithValue("@username", username);
-            var readUsernames = cmd2.ExecuteReader();
-            readUsernames.Read();
-            string cmdString = "insert into taxi(passengers,type,pickupTime,pickUpAdress,dropUpAdress,driverNote,callerPhone,callerFullname) values('" + this.trackBar1.Value + "', '" + this.cmb_vehicleType.Text + "', '" + this.cmb_pickupTime.Text + "', '" + this.txt_pickupAddress.TextName + "', '" + this.txt_dropoffAddress.TextName + "', '" +this.richTextBox1.Text + "', '" + readUsernames.GetString(3)+ "', '" +readUsernames.GetString(1) + "'); ";
-            readUsernames.Close();
-            MySqlCommand cmd = new MySqlCommand(cmdString, con);
-            var inserter = cmd.ExecuteReader();
-            inserter.Read();
-            change.ChangeDestinationPins(docFile,change.MAP_DROPOFFDEST_CONSTANT, this.txt_dropoffAddress.TextName);
-            MessageBox.Show("You requsted a taxi");
-            lbl_status.Visible = true;
-            Map map = new Map();
-            map.Show();
-            change.ChangeDestinationPins(docFile, this.txt_dropoffAddress.TextName, change.MAP_DROPOFFDEST_CONSTANT);
->>>>>>> e99dd0b2de07262af88231667123d715dc85d3c2
+//=======
+//            cmd2.Parameters.AddWithValue("@username", username);
+//            var readUsernames = cmd2.ExecuteReader();
+//            readUsernames.Read();
+//            string cmdString = "insert into taxi(passengers,type,pickupTime,pickUpAdress,dropUpAdress,driverNote,callerPhone,callerFullname) values('" + this.trackBar1.Value + "', '" + this.cmb_vehicleType.Text + "', '" + this.cmb_pickupTime.Text + "', '" + this.txt_pickupAddress.TextName + "', '" + this.txt_dropoffAddress.TextName + "', '" +this.richTextBox1.Text + "', '" + readUsernames.GetString(3)+ "', '" +readUsernames.GetString(1) + "'); ";
+//            readUsernames.Close();
+//            MySqlCommand cmd = new MySqlCommand(cmdString, con);
+//            var inserter = cmd.ExecuteReader();
+//            inserter.Read();
+//            change.ChangeDestinationPins(docFile,change.MAP_DROPOFFDEST_CONSTANT, this.txt_dropoffAddress.TextName);
+//            MessageBox.Show("You requsted a taxi");
+//            lbl_status.Visible = true;
+//            Map map = new Map();
+//            map.Show();
+//            change.ChangeDestinationPins(docFile, this.txt_dropoffAddress.TextName, change.MAP_DROPOFFDEST_CONSTANT);
+//>>>>>>> e99dd0b2de07262af88231667123d715dc85d3c2
 
         }
 
